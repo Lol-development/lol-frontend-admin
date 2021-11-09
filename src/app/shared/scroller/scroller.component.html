@@ -1,0 +1,77 @@
+<div class="topnav shadow-sm">
+    <div class="container-fluid active">
+        <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+
+            <div class="collapse navbar-collapse " id="topnav-menu-content">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" [routerLink]="['/Home']" id="topnav-dashboards" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="uil-dashboard me-1"></i>Home
+                            <div class="arrow-down"></div>
+                        </a>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" [routerLink]="['/Home/CreateClients']" routerLinkActive="active" id="topnav-apps" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="uil-apps me-1"></i>Clientes
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                            <a [routerLink]="['/Home/CreateClients']" routerLinkActive="active" class="dropdown-item">Crear clientes</a>
+                            <a [routerLink]="['/Home/Operations']" routerLinkActive="active" class="dropdown-item">Listado de clientes</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" [routerLink]="['/Home/CreateEmployees']" routerLinkActive="active" id="topnav-pages" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="uil-copy-alt me-1"></i>Empleados
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                            <a [routerLink]="['/Home/CreateEmployees']" routerLinkActive="active" class="dropdown-item">Crear empleados</a>
+                            <a [routerLink]="['/Home/EmployeesList']" routerLinkActive="active" class="dropdown-item">Listado de  empleados</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" [routerLink]="['/Home/Inventory']" routerLinkActive="active" id="topnav-components" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="uil-package me-1"></i>Equipos
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-components">
+                            <a [routerLink]="['/Home/Inventory']" routerLinkActive="active" class="dropdown-item">Inventario propio</a>
+                            <a [routerLink]="['/Home/NewMachine']" routerLinkActive="active" class="dropdown-item">Nuevo equipo</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" [routerLink]="['/Home/VendorsDirectory']" routerLinkActive="active" id="topnav-layouts" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="uil-window me-1"></i>Proveedores
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-layouts">
+                            <a [routerLink]="['/Home/VendorsDirectory']" routerLinkActive="active" class="dropdown-item">Directorio de proveedores</a>
+                            <a [routerLink]="['/Home/NewVendorsDirectory']" routerLinkActive="active" class="dropdown-item">Nuevo proveedor</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" id="topnav-layouts" [routerLink]="['/Home/Parameters']" routerLinkActive="active" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="uil-window me-1"></i>Configuraciones
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-layouts">
+                            <a [routerLink]="['/Home/Parameters']" routerLinkActive="active" class="dropdown-item">Parámetros</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" id="topnav-layouts" [routerLink]="['/Home/CreatAuxAdmins']" routerLinkActive="active" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="uil-window me-1"></i>Administrativos
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-layouts">
+                            <a [routerLink]="['/Home/CreatAuxAdmins']" routerLinkActive="active" class="dropdown-item">Crear administradores auxiliares</a>
+                            <a [routerLink]="['/Home/AuxAdminList']" routerLinkActive="active" class="dropdown-item">Listado de administradores</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

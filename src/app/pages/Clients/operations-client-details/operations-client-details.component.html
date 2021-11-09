@@ -1,0 +1,1077 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="header-title">Detalles de la operacion</h4>
+
+        <!-- end nav-->
+        <div class="tab-content">
+            <div class="tab-pane show active" id="bordered-justified-tabs-preview">
+                <ul class="nav nav-tabs nav-justified nav-bordered mb-3">
+                    <li class="nav-item ">
+                        <a href="#turns" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                            <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                            <span class="d-none d-md-block">Turnos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#operations-state" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                            <span class="d-none d-md-block">Estado de hechos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#Desprendibles" data-bs-toggle="tab" aria-expanded="false" class="nav-link ">
+                            <i class="mdi mdi-account-circle d-md-none d-block"></i>
+                            <span class="d-none d-md-block">Desprendibles</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#chargue" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                            <span class="d-none d-md-block">Cargue</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#descharge" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                            <span class="d-none d-md-block">Descargue</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#office" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                            <span class="d-none d-md-block">Despacho</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#evidencias" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                            <span class="d-none d-md-block">Evidencias</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="tab-content">
+
+                            <div class="tab-pane show active" id="turns">
+                                <div class="tab-content">
+                                    <div class="tab-pane show active" id="vertical-left-tabs-preview">
+                                        <div class="row">
+                                            <div class="col-sm-3 mb-2 mb-sm-0">
+                                                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                                    <a class="nav-link active" id="v-pills-settings-tab" data-bs-toggle="pill" href="#consolidate" role="tab" aria-controls="consolidate" aria-selected="false">
+                                                        <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                                                        <span class="d-none d-md-block">RCC</span>
+                                                    </a>
+
+                                                    <a class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#daily-table" role="tab" aria-controls="daily-table" aria-selected="false">
+                                                        <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                                                        <span class="d-none d-md-block">Planilla diaria</span>
+                                                    </a>
+
+
+                                                    <a class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#turn-bill" role="tab" aria-controls="turn-bill" aria-selected="false">
+                                                        <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                                                        <span class="d-none d-md-block">Facturación de turnos(Cliente)</span>
+                                                    </a>
+
+
+                                                </div>
+                                            </div>
+                                            <!-- end col-->
+
+                                            <div class="col-sm-9">
+                                                <div class="tab-content" id="v-pills-tabContent">
+                                                    <div class="tab-pane   fade" id="turn-bill" role="tabpanel" aria-labelledby="turn-bill-tab">
+                                                        <div class="d-flex w-auto">
+                                                            <label class="form-label">Mes a facturar</label>
+                                                            <input type="month" class="form-control date" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" style="height:38px">
+                                                            <a href="#" class="mx-2">
+                                                                <button class="btn btn-primary">Descargar</button>
+                                                            </a>
+                                                        </div>
+                                                        <div class="table-responsive-sm">
+                                                            <table class="table table-striped table-centered mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Detalle</th>
+                                                                        <th>Cant.</th>
+                                                                        <th>Vr. Por turno ($)</th>
+                                                                        <th>Subtotal</th>
+                                                                        <th>
+                                                                            <div class="form-check">
+                                                                                <label class="form-check-label" for="flexCheckChecked">
+                                                                                    Verificado
+                                                                                </label>
+                                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                                                            </div>
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Turnos Pto Pimsa-Estibador - 8hrs Diruno - Nocturno</td>
+                                                                        <td>0</td>
+                                                                        <td>$ 126.000</td>
+                                                                        <td>0</td>
+                                                                        <td></td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Turnos Pto Pimsa-Estibador - 10hrs Diruno - Nocturno</td>
+                                                                        <td>32.5</td>
+                                                                        <td>$ 137.000</td>
+                                                                        <td>$ 4.452.500 </td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Turnos Pto Pimsa- Operario de Montacargas - Siso- Supervisor- <br>Tarjador- Digitalizador- 10 Hrs Diurno - Nocturno</td>
+                                                                        <td>10,5</td>
+                                                                        <td>$ 171.000</td>
+                                                                        <td>$ 1.795.500</td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Reembolso de Servicio de Comedor </td>
+                                                                        <td>39</td>
+                                                                        <td>$ 14.500</td>
+                                                                        <td>$ 565.500</td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><b>TOTALES JULIO DE 2021</b></td>
+                                                                        <td>43</td>
+                                                                        <td></td>
+                                                                        <td>$ 6.813.500</td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div id="complex-header-datatable_paginate" class="dataTables_paginate paging_simple_numbers mt-1 text-end">
+                                                                <ul class="pagination pagination-rounded text-end">
+                                                                    <li id="complex-header-datatable_previous" class="paginate_button page-item previous disabled"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="0" tabindex="0" class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
+                                                                    <li class="paginate_button page-item active"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                                                    <li id="complex-header-datatable_next" class="paginate_button page-item next"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="7" tabindex="0" class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane   fade" id="daily-table" role="tabpanel" aria-labelledby="daily-table-tab">
+                                                        <div class=" d-flex w-auto ">
+                                                            <label class="form-label">Dia a facturar</label>
+                                                            <input type="date" class="form-control date " id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" style="height: 38px;">
+                                                            <a href="#" class="mx-2">
+                                                                <button class="btn btn-primary">Descargar</button>
+                                                            </a>
+                                                        </div>
+                                                        <div class="table-responsive-sm">
+                                                            <table class="table table-striped table-centered mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Nombre</th>
+                                                                        <th>Puerto</th>
+                                                                        <th>Turno</th>
+                                                                        <th>Horas laboradas</th>
+                                                                        <th>Actividad Ejecutada</th>
+                                                                        <th>Transporte</th>
+                                                                        <th>Alimentación</th>
+
+                                                                        <th>SS</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr style="cursor: pointer;" tabindex="0">
+                                                                        <td class="table-user"><span>Hugo Guette</span></td>
+                                                                        <td><span>Pimsa</span></td>
+                                                                        <td><span>Diurno</span></td>
+                                                                        <td><span>10 horas</span></td>
+                                                                        <td><span>Salubrista</span></td>
+                                                                        <td><span>Tpt</span></td>
+                                                                        <td>
+                                                                            <span>Alm </span>
+                                                                            <span>Mer</span>
+                                                                        </td>
+                                                                        <td>Ss</td>
+
+                                                                    </tr>
+                                                                    <tr style="cursor: pointer;" tabindex="0">
+                                                                        <td class="table-user"><span>Sergio Florez (Tarjador )</span></td>
+                                                                        <td><span>Pimsa</span></td>
+                                                                        <td><span>Diurno</span></td>
+                                                                        <td><span>10 horas</span></td>
+                                                                        <td><span>Tarjador</span></td>
+                                                                        <td><span>Tpt</span></td>
+                                                                        <td>
+                                                                            <span>Alm </span>
+                                                                            <span>Mer</span>
+                                                                        </td>
+                                                                        <td>Ss</td>
+
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                            <div id="complex-header-datatable_paginate" class="dataTables_paginate paging_simple_numbers mt-1 text-end">
+                                                                <ul class="pagination pagination-rounded text-end">
+                                                                    <li id="complex-header-datatable_previous" class="paginate_button page-item previous disabled"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="0" tabindex="0" class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
+                                                                    <li class="paginate_button page-item active"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                                                    <li id="complex-header-datatable_next" class="paginate_button page-item next"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="7" tabindex="0" class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tab-pane active show fade" id="consolidate" role="tabpanel" aria-labelledby="consolidate-tab">
+                                                        <div class="table-responsive-sm">
+                                                            <table class="table table-striped table-centered mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>ID</th>
+                                                                        <th>Nombre del empleado</th>
+                                                                        <th>Cargo del empleado</th>
+                                                                        <th>Numero de turnos - mes</th>
+                                                                        <th>Valor a pagar - mes</th>
+                                                                        <th>
+                                                                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-staf-modal">
+                                                                                <i class="mdi-plus mdi"></i> Personal
+                                                                            </button>
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr style="cursor: pointer;" tabindex="0">
+                                                                        <td class="table-user"><span>73,085,373</span></td>
+                                                                        <td><span>Andres Figueroa Estrada </span></td>
+                                                                        <td><span>Tarjador </span></td>
+                                                                        <td><span>25</span></td>
+                                                                        <td><span>$670.000</span></td>
+
+                                                                        <td class="table-action"><a class="action-icon" [routerLink]="['/Home/ClientOperations',this.ID,'OperationsDetail', this.Oid, 'EmployeeMonthJob', 1]" routerLinkActive="router-link-active"><i class="uil uil-expand-arrows"></i></a></td>
+                                                                    </tr>
+                                                                    <tr style="cursor: pointer;" tabindex="0">
+                                                                        <td class="table-user"><span>72,043,917</span></td>
+                                                                        <td><span>Apolinar Javier Barrios Jiménez</span></td>
+                                                                        <td><span>Estibador</span></td>
+                                                                        <td><span>30</span></td>
+                                                                        <td><span>$870.000</span></td>
+
+                                                                        <td class="table-action"><a class="action-icon" [routerLink]="['/Home/ClientOperations',this.ID,'OperationsDetail', this.Oid, 'EmployeeMonthJob', 1]" routerLinkActive="router-link-active"><i class="uil uil-expand-arrows"></i></a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td><b>Total a pagar en mes</b></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td>$1.630.000</td>
+                                                                        <td></td>
+
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- end tab-content-->
+                                            </div>
+                                            <!-- end col-->
+                                        </div>
+                                        <!-- end row-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="Desprendibles">
+                                <div class="d-flex justify-content-between mb-2">
+
+                                    <button class="btn btn-primary" style="height: 38px;">Descargar</button>
+                                    <button class="btn btn-primary" data-bs-target="#add-removable-modal" data-bs-toggle="modal">Agregar reporte</button>
+
+
+                                </div>
+                                <div class="app-search ">
+                                    <div class="mb-2 position-relative">
+                                        <input type="text" placeholder="Buscar cargas/descargas" class="form-control">
+                                        <span class="mdi mdi-magnify search-icon"></span>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive ">
+                                    <table class="table table-striped table-centered mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                </th>
+                                                <th>ID</th>
+                                                <th>Nombre Completo</th>
+                                                <th>Actividad</th>
+                                                <th>Periodo</th>
+                                                <th>Cargo</th>
+                                                <th>Salario Básico</th>
+                                                <th>Aux. de Tpt</th>
+                                                <th>Inicio de contrato</th>
+                                                <th>Fín contrato</th>
+                                                <th>Duración</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="table-user">
+                                                    <img src="assets/images/users/avatar-2.jpg" alt="table-user" class="me-2 rounded-circle">
+                                                </td>
+                                                <td> 73,085,373 </td>
+                                                <td> Andres Figueroa Estrada </td>
+                                                <td> LIMPIEZA DE PASOS- AYUDANTE DE MONTACARGAS-BATIMETRIA - MALAMBO (ATLANTICO) </td>
+                                                <td> PAGO DEL 19 AL 27 MAYO DE 2021</td>
+                                                <td> Estibador</td>
+                                                <td> $ 908,526.00 </td>
+
+                                                <td> $ 106,454.00 </td>
+                                                <td> 08/06/2021 </td>
+                                                <td> 10/06/2021 </td>
+                                                <td>2 Días</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="table-user">
+                                                    <img src="assets/images/users/avatar-3.jpg" alt="table-user" class="me-2 rounded-circle">
+                                                </td>
+                                                <td> 72,043,917 </td>
+                                                <td>Apolinar Javier Barrios Jiménez </td>
+                                                <td>LIMPIEZA DE PASOS- AYUDANTE DE MONTACARGAS-BATIMETRIA - MALAMBO (ATLANTICO) </td>
+                                                <td>DESPRENDIBLE DE PAGO - DEL 19 AL 27 MAYO DE 2034 </td>
+                                                <td>Estibador </td>
+                                                <td>$ 908,526.00 </td>
+                                                <td>$ 106,454.00 </td>
+                                                <td>04/06/2021 </td>
+                                                <td>08/06/2021 </td>
+                                                <td>4 Días </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table-user">
+                                                    <img src="assets/images/users/avatar-4.jpg" alt="table-user" class="me-2 rounded-circle">
+                                                </td>
+                                                <td>12,596,856 </td>
+                                                <td>Ariel Darío Zuleta Padilla</td>
+                                                <td>LIMPIEZA DE PASOS- AYUDANTE DE MONTACARGAS-BATIMETRIA - MALAMBO (ATLANTICO)</td>
+                                                <td>DESPRENDIBLE DE PAGO - DEL 19 AL 27 MAYO DE 2022 </td>
+                                                <td>Estibador </td>
+                                                <td> $ 908,526.00 </td>
+                                                <td> $ 106,454.00 </td>
+                                                <td>04/06/2021 </td>
+                                                <td>08/06/2021 </td>
+                                                <td>4 Días </td>
+
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="complex-header-datatable_paginate" class="col-sm-12 dataTables_paginate paging_simple_numbers mt-2 d-flex justify-content-between">
+                                    <ul class="pagination pagination-rounded text-end">
+                                        <li id="complex-header-datatable_previous" class="paginate_button page-item previous disabled"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="0" tabindex="0" class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
+                                        <li class="paginate_button page-item active"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                        <li id="complex-header-datatable_next" class="paginate_button page-item next"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="7" tabindex="0" class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-pane   fade" id="operations-state">
+                                <div class=" d-flex w-auto justify-content-end ">
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-operation-status-modal">Generar reporte</button>
+                                </div>
+                                <div class="table-responsive-sm">
+                                    <table class="table table-striped table-centered mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>N°</th>
+                                                <th>Motonave/Barcaza</th>
+                                                <th>Fecha</th>
+                                                <th>Hora inicio </th>
+                                                <th>Descripción/Novedad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style="cursor: pointer;" tabindex="0">
+                                                <td class="table-user"><span>1</span></td>
+                                                <td><span>MAG7</span></td>
+                                                <td><span>10/05/2021</span></td>
+                                                <td><span>10:35 AM</span></td>
+                                                <td><span>Freno en descargue por malas condiciones climaticas</span></td>
+
+
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                    <div id="complex-header-datatable_paginate" class="dataTables_paginate paging_simple_numbers mt-1 text-end">
+                                        <ul class="pagination pagination-rounded text-end">
+                                            <li id="complex-header-datatable_previous" class="paginate_button page-item previous disabled"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="0" tabindex="0" class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
+                                            <li class="paginate_button page-item active"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                            <li id="complex-header-datatable_next" class="paginate_button page-item next"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="7" tabindex="0" class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="chargue">
+                                <div class="container-btn d-flex justify-content-between mb-2">
+                                    <button class="btn btn-primary" style="height: 38px;">Descargar</button>
+                                    <button class="btn btn-primary mx-2" style="height: 38px;" data-bs-target="#add-charge-modal" data-bs-toggle="modal">Agregar reporte</button>
+                                </div>
+                                <div class="app-search ">
+                                    <div class="mb-2 position-relative">
+                                        <input type="text" placeholder="Buscar cargas...." class="form-control">
+                                        <span class="mdi mdi-magnify search-icon"></span>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-centered mb-0">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Motonave/Barcaza</th>
+                                                <th>Fecha y hora inicio</th>
+                                                <th>Fecha y hora fin</th>
+                                                <th>N° Bobinas</th>
+                                                <th>Cliente</th>
+                                                <th>Placa</th>
+                                                <th>Remesa</th>
+                                                <th>Código bobina</th>
+                                                <th>Espesor</th>
+                                                <th>Dimensiones</th>
+                                                <th>Peso bruto</th>
+                                                <th>Observaciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+
+                                                <td>KING 300</td>
+                                                <td>24/06/2021 07:12</td>
+                                                <td>24/08/2021 12:12</td>
+                                                <td>1</td>
+                                                <td>Cliente 4</td>
+                                                <td>FWE345</td>
+                                                <td>15000</td>
+                                                <td>HDF49342D</td>
+                                                <td>5mts</td>
+                                                <td>5 x 2.5 mts/u</td>
+                                                <td>300kg</td>
+                                                <td>Perfectas condiciones</td>
+                                            </tr>
+                                            <tr>
+
+
+                                                <td>MLB 234</td>
+                                                <td>24/07/2021 07:12</td>
+                                                <td>24/07/2021 12:12</td>
+                                                <td>1</td>
+                                                <td>Cliente 4</td>
+                                                <td>WHR100</td>
+                                                <td>15000</td>
+                                                <td>DHFHS49AS</td>
+                                                <td>6mts</td>
+                                                <td>3 x 4.5 mts/u</td>
+                                                <td>600kg</td>
+                                                <td>Perfectas condiciones</td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="complex-header-datatable_paginate" class="dataTables_paginate paging_simple_numbers mt-2 d-flex justify-content-between">
+
+                                    <ul class="pagination pagination-rounded text-end">
+                                        <li id="complex-header-datatable_previous" class="paginate_button page-item previous disabled"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="0" tabindex="0" class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
+                                        <li class="paginate_button page-item active"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                        <li id="complex-header-datatable_next" class="paginate_button page-item next"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="7" tabindex="0" class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                            <div class="tab-pane" id="descharge">
+                                <div class="container-btn d-flex justify-content-between mb-2">
+                                    <button class="btn btn-primary" style="height: 38px;">Descargar</button>
+                                    <button class="btn btn-primary mx-2" style="height: 38px;" data-bs-target="#add-descharge-modal" data-bs-toggle="modal">Agregar reporte</button>
+                                </div>
+                                <div class="app-search ">
+                                    <div class="mb-2 position-relative">
+                                        <input type="text" placeholder="Buscar descargas...." class="form-control">
+                                        <span class="mdi mdi-magnify search-icon"></span>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-centered mb-0">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Motonave/Barcaza</th>
+                                                <th>Fecha y hora inicio</th>
+                                                <th>Fecha y hora fin</th>
+                                                <th>N° Bobinas</th>
+                                                <th>Cliente</th>
+
+                                                <th>Observaciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+
+                                                <td>KING 300</td>
+                                                <td>24/06/2021 07:12</td>
+                                                <td>24/08/2021 12:12</td>
+                                                <td>1</td>
+                                                <td>Cliente 4</td>
+
+                                                <td>Perfectas condiciones</td>
+                                            </tr>
+                                            <tr>
+
+
+                                                <td>MLB 234</td>
+                                                <td>24/07/2021 07:12</td>
+                                                <td>24/07/2021 12:12</td>
+                                                <td>1</td>
+                                                <td>Cliente 4</td>
+
+                                                <td>Perfectas condiciones</td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="complex-header-datatable_paginate" class="dataTables_paginate paging_simple_numbers mt-2 d-flex justify-content-between">
+
+                                    <ul class="pagination pagination-rounded text-end">
+                                        <li id="complex-header-datatable_previous" class="paginate_button page-item previous disabled"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="0" tabindex="0" class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
+                                        <li class="paginate_button page-item active"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                        <li id="complex-header-datatable_next" class="paginate_button page-item next"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="7" tabindex="0" class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                            <div class="tab-pane" id="office">
+                                <div class="btn-container d-flex justify-content-between mb-2">
+                                    <button class="btn btn-primary" style="height: 38px;">Descargar</button>
+                                    <button class="btn btn-primary mx-2" style="height: 38px;" data-bs-target="#add-office-modal" data-bs-toggle="modal">Nuevo despacho</button>
+                                </div>
+                                <div class="app-search ">
+                                    <div class="mb-2 position-relative">
+                                        <input type="text" placeholder="Buscar despachos" class="form-control">
+                                        <span class="mdi mdi-magnify search-icon"></span>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-centered mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Motonave/Barcaza</th>
+                                                <th>Fecha y hora inicio</th>
+                                                <th>Fecha y hora fin</th>
+                                                <th>N° Bobinas</th>
+                                                <th>Cliente</th>
+                                                <th>Placa</th>
+                                                <th>Remesa</th>
+                                                <th>Código bobina</th>
+                                                <th>Espesor</th>
+                                                <th>Dimensiones</th>
+                                                <th>Peso bruto</th>
+                                                <th>Observaciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+
+                                                <td>KING 300</td>
+                                                <td>24/06/2021 07:12</td>
+                                                <td>24/08/2021 12:12</td>
+                                                <td>5</td>
+                                                <td>Remesa</td>
+                                                <td>FWE345</td>
+                                                <td>15000</td>
+                                                <td>HDF49342D</td>
+                                                <td>5mts</td>
+                                                <td>5 x 2.5 mts/u</td>
+                                                <td>300kg</td>
+                                                <td>Perfectas condiciones</td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>MLB 234</td>
+                                                <td>24/07/2021 07:12</td>
+                                                <td>24/07/2021 12:12</td>
+                                                <td>7</td>
+                                                <td>Remesa</td>
+                                                <td>WHR100</td>
+                                                <td>15000</td>
+                                                <td>DHFHS49AS</td>
+                                                <td>6mts</td>
+                                                <td>3 x 4.5 mts/u</td>
+                                                <td>600kg</td>
+                                                <td>Perfectas condiciones</td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="complex-header-datatable_paginate" class="dataTables_paginate paging_simple_numbers mt-2 d-flex justify-content-between">
+
+                                    <ul class="pagination pagination-rounded text-end">
+                                        <li id="complex-header-datatable_previous" class="paginate_button page-item previous disabled"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="0" tabindex="0" class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
+                                        <li class="paginate_button page-item active"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                        <li id="complex-header-datatable_next" class="paginate_button page-item next"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="7" tabindex="0" class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="evidencias">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-3">Adjunta material gráfico de la operacion</h5>
+                                        <p class="card-text mb-3">Dimensiones recomendadas 800x400 (px)</p>
+                                        <form action="/" method="post" class="dropzone dz-clickable" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
+
+
+                                            <div class="dz-message needsclick">
+                                                <i class="h3 text-muted dripicons-cloud-upload"></i>
+                                                <h4>Drop files here or click to upload.</h4>
+                                            </div>
+                                        </form>
+                                        <div class="card mb-0 my-1 shadow-none border">
+                                            <div class="p-2">
+                                                <div class="row align-items-center">
+                                                    <div class="col-auto">
+                                                        <div class="avatar-sm">
+                                                            <span class="avatar-title bg-secondary text-light rounded">
+                                                                                            .MP4
+                                                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col ps-0">
+                                                        <a href="javascript:void(0);" class="text-muted fw-bold">Admin-bug-report.mp4</a>
+                                                        <p class="mb-0">7.05 MB</p>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <!-- Button -->
+                                                        <a href="javascript:void(0);" class="btn btn-link btn-lg text-muted">
+                                                            <i class="dripicons-download"></i>
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 mb-sm-2 mt-2">
+                                            <button class="btn btn-primary">Subir</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end preview-->
+        <!-- end preview code-->
+    </div>
+    <!-- end tab-content-->
+</div>
+<!-- end card-body -->
+
+
+
+<!-- ================================================= -->
+<!-- =============ADD STAFF MODAL===================== -->
+<!-- ================================================= -->
+<div id="add-staf-modal" class="modal fade show" tabindex="-1" aria-labelledby="primary-header-modalLabel" style="display: none;" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-colored-header bg-primary">
+                <h4 class="modal-title" id="add-turn-modalLabel">Agregar Personal</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="date-container d-flex justify-content-between">
+                    <div class="mb-3">
+                        <label class="form-label">Fechas Inicial</label>
+                        <input type="date" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Fechas Final</label>
+                        <input type="date" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
+                    </div>
+                </div>
+
+
+                <select class="form-select mb-3">
+                    <option selected="">Seleccionar personal</option>
+                    <option value="1">Jose Amaya</option>
+                    <option value="2">Juan Lopez</option>
+                    <option value="3">Carlos Perez</option>
+                </select>
+
+                <select class="form-select mb-3">
+                    <option selected="">Seleccionar turno</option>
+                    <option value="1">8hrs Diurno</option>
+                    <option value="2">8hrs Nocturno</option>
+                    <option value="3">10hrs Diurno, Sabados y Domingos</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- ================================================= -->
+<!-- =============ADD REMOVABLE MODAL REPORT===================== -->
+<!-- ================================================= -->
+<div id="add-removable-modal" class="modal fade show" tabindex="-1" aria-labelledby="primary-header-modalLabel" style="display: none;" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-colored-header bg-primary">
+                <h4 class="modal-title" id="add-turn-modalLabel">Agregar Desprendible</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-container">
+                    <div class="mb-3">
+                        <label class="form-label">ID</label>
+                        <input type="text" class="form-control" placeholder="ID del trabajador">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nombre completo</label>
+                        <input type="text" class="form-control" placeholder="Nombre completo del trabajador">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Actividad</label>
+                        <input type="text" class="form-control" placeholder="Actividad del empleado">
+                    </div>
+                    <div class="mb-3 d-flex justify-content-between">
+                        <div class="initial-date">
+                            <label class="form-label">Fecha Inicial</label>
+                            <input type="date" class="form-control" placeholder="Periodo inicial de actividades">
+                        </div>
+                        <div class="finish-date">
+                            <label class="form-label">Fecha Final</label>
+                            <input type="date" class="form-control" placeholder="Periodo final de actividades">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select mb-3">
+                            <option selected="">Seleccionar cargo</option>
+                            <option value="1">Estibador</option>
+                            <option value="2">Tarjador</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Salario Básico</label>
+                        <input type="number" min="0" class="form-control" placeholder="Salario básico del empleado">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Aux. de Tpt</label>
+                        <input type="number" min="0" class="form-control" placeholder="Auxilio de transporte">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Duración</label>
+                        <input type="text" class="form-control" placeholder="Duración del contrato">
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- ================================================= -->
+<!-- =============ADD CHARGE  MODAL REPORT===================== -->
+<!-- ================================================= -->
+<div id="add-charge-modal" class="modal fade show" tabindex="-1" aria-labelledby="primary-header-modalLabel" style="display: none;" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-colored-header bg-primary">
+                <h4 class="modal-title" id="add-turn-modalLabel">Agregar Cargue</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-container">
+                    <div class="mb-3">
+                        <select class="form-select mb-3">
+                            <option selected="">Tipo de movimiento</option>
+                            <option value="1">Cargue</option>
+                            <option value="2">Descargue</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Motonave/Barcaza</label>
+                        <input type="text" class="form-control" placeholder="Nombre de la motonave/barcaza">
+                    </div>
+                    <div class="mb-3 d-flex justify-content-between w-100">
+                        <div class="initial-date w-50 mx-1">
+                            <label class="form-label">Fecha Inicial</label>
+                            <input type="datetime-local" class="form-control" placeholder="Fecha inicial del movimiento">
+                        </div>
+                        <div class="finish-date w-50 ">
+                            <label class="form-label">Fecha Final</label>
+                            <input type="datetime-local" class="form-control" placeholder="Fecha del movimiento">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">N° Bobinas</label>
+                        <input type="number" min="0" max="1" class="form-control" placeholder="N° Bobinas">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Cliente</label>
+                        <input type="text" class="form-control" placeholder="Nombre del cliente">
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Placa</label>
+                        <input type="number" min="0" class="form-control" placeholder="Placa de la motonave">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Remesa</label>
+                        <input type="number" min="0" class="form-control" placeholder="Remesa del movimiento">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Código bobina</label>
+                        <input type="text" class="form-control" placeholder="Código de la bobina">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Espesor</label>
+                        <input type="text" class="form-control" placeholder="Espesor">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Dimensiones</label>
+                        <input type="text" class="form-control" placeholder="Dimensiones de la bobina">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Peso bruto</label>
+                        <input type="text" class="form-control" placeholder="Peso bruto">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Observaciones</label>
+                        <input type="text" class="form-control" placeholder="Observaciones del movimiento">
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- ================================================= -->
+<!-- =============ADD DESCHARGE  MODAL REPORT===================== -->
+<!-- ================================================= -->
+<div id="add-descharge-modal" class="modal fade show" tabindex="-1" aria-labelledby="primary-header-modalLabel" style="display: none;" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-colored-header bg-primary">
+                <h4 class="modal-title" id="add-turn-modalLabel">Agregar Descargue</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-container">
+
+                    <div class="mb-3">
+                        <label class="form-label">Motonave/Barcaza</label>
+                        <input type="text" class="form-control" placeholder="Nombre de la motonave/barcaza">
+                    </div>
+                    <div class="mb-3 d-flex justify-content-between w-100">
+                        <div class="initial-date w-50 mx-1">
+                            <label class="form-label">Fecha Inicial</label>
+                            <input type="datetime-local" class="form-control" placeholder="Fecha inicial del movimiento">
+                        </div>
+                        <div class="finish-date w-50 ">
+                            <label class="form-label">Fecha Final</label>
+                            <input type="datetime-local" class="form-control" placeholder="Fecha del movimiento">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">N° Bobinas</label>
+                        <input type="number" min="0" max="1" class="form-control" placeholder="N° Bobinas">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Cliente</label>
+                        <input type="text" class="form-control" placeholder="Nombre del cliente">
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Observaciones</label>
+                        <input type="text" class="form-control" placeholder="Observaciones del movimiento">
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- ================================================= -->
+<!-- =============ADD OFFICE MODAL REPORT===================== -->
+<!-- ================================================= -->
+<div id="add-office-modal" class="modal fade show" tabindex="-1" aria-labelledby="primary-header-modalLabel" style="display: none;" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-colored-header bg-primary">
+                <h4 class="modal-title" id="add-turn-modalLabel">Agregar Despacho</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-container">
+
+                    <div class="mb-3">
+                        <label class="form-label">Motonave/Barcaza</label>
+                        <input type="text" class="form-control" placeholder="Nombre de la motonave/barcaza">
+                    </div>
+                    <div class="mb-3 d-flex justify-content-between w-100">
+                        <div class="initial-date w-50 mx-1">
+                            <label class="form-label">Fecha Inicial</label>
+                            <input type="datetime-local" class="form-control" placeholder="Fecha inicial del movimiento">
+                        </div>
+                        <div class="finish-date w-50 ">
+                            <label class="form-label">Fecha Final</label>
+                            <input type="datetime-local" class="form-control" placeholder="Fecha del movimiento">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">N° Bobinas</label>
+                        <input type="number" min="0" class="form-control" placeholder="N° Bobinas">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Cliente</label>
+                        <input type="text" class="form-control" placeholder="Nombre del cliente">
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Placa</label>
+                        <input type="number" min="0" class="form-control" placeholder="Placa de la motonave">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Remesa</label>
+                        <input type="number" min="0" class="form-control" placeholder="Remesa del despacho">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Código bobina</label>
+                        <input type="text" class="form-control" placeholder="Código de la bobina">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Espesor</label>
+                        <input type="text" class="form-control" placeholder="Espesor">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Dimensiones</label>
+                        <input type="text" class="form-control" placeholder="Dimensiones de la bobina">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Peso bruto</label>
+                        <input type="text" class="form-control" placeholder="Peso bruto">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Observaciones</label>
+                        <input type="text" class="form-control" placeholder="Observaciones del despacho">
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- ================================================= -->
+<!-- =============ADD OPERATION  STATUS REPORT MODAL===================== -->
+<!-- ================================================= -->
+<div id="add-operation-status-modal" class="modal fade show" tabindex="-1" aria-labelledby="primary-header-modalLabel" style="display: none;" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-colored-header bg-primary">
+                <h4 class="modal-title" id="add-turn-modalLabel">Agregar Reporte </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-container">
+
+                    <div class="mb-3">
+                        <label class="form-label">Motonave/Barcaza</label>
+                        <input type="text" class="form-control" placeholder="Nombre de la motonave/barcaza">
+                    </div>
+                    <div class="mb-3 d-flex justify-content-between w-100">
+                        <div class="initial-date w-50 mx-1">
+                            <label class="form-label">Hora inicio</label>
+                            <input type="time" class="form-control" placeholder="Hora inicio del reporte">
+                        </div>
+                        <div class="finish-date w-50 ">
+                            <label class="form-label">Fecha </label>
+                            <input type="date" class="form-control" placeholder="Fecha del reporte">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        <input type="text" class="form-control" placeholder="Descripción del reporte">
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" class="form-checkbox-primary mr-1">
+                        <label class="form-check-label mx-1">Notificar al correo</label>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

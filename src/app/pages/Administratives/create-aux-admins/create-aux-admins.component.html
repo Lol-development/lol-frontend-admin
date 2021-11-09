@@ -1,0 +1,138 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="header-title">Crear Administradores Auxiliares</h4>
+        <p class="text-muted font-14">
+            Crea administradores con permisos especiales en LoL
+        </p>
+
+        <ul class="nav nav-tabs nav-bordered mb-3">
+            <li class="nav-item">
+                <a href="#input-types-preview" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                    Creación
+                </a>
+            </li>
+
+        </ul>
+        <!-- end nav-->
+
+        <div class="tab-content">
+            <div class="tab-pane show active" id="input-types-preview">
+                <form class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-lg-6">
+
+                            <div class="position-relative mb-3">
+                                <label class="form-label" for="validationTooltipUsername">Nombre Completo</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Nombre completo" aria-describedby="validationTooltipUsernamePrepend" required>
+                                    <div class="invalid-tooltip">
+                                        Este campo es requerido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="position-relative mb-3">
+                                <label class="form-label" for="validationTooltip03">Email</label>
+                                <input type="email" class="form-control" id="validationTooltip03" placeholder="Email" required>
+                                <div class="invalid-tooltip">
+                                    Email no válido.
+                                </div>
+                            </div>
+                            <div class="position-relative mb-3">
+                                <label class="form-label" for="validationTooltip03">Cargo</label>
+                                <select class="form-select mb-3">
+                                    <option selected>Cargos Disponibles</option>
+                                    <option value="1">Digitalizador</option>
+                                    <option value="2">Operador de montacargas</option>
+                                    <option value="3">Tarjador</option>
+                                </select>
+                                <div class="invalid-tooltip">
+                                    Cargo del administrador
+                                </div>
+                            </div>
+                            <div class="position-relative mb-3">
+                                <label class="form-label" for="validationTooltip03">Rol</label>
+                                <input type="text" class="form-control" id="validationTooltip03" min="0" placeholder="Rol de administradores" required>
+                                <div class="invalid-tooltip">
+                                    Rol no válido.
+                                </div>
+                            </div>
+                            <div class="position-relative mb-3">
+                                <label class="form-label" for="validationTooltip03">Numero</label>
+                                <input type="number" class="form-control" id="validationTooltip03" min="0" placeholder="Numero de teléfono" required>
+                                <div class="invalid-tooltip">
+                                    Numero no válido.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="example-password" class="form-label">Contraseña</label>
+                                <input type="password" id="example-password" class="form-control" value="Escribe tu contraseña">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Repite la contraseña</label>
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="password" class="form-control" placeholder="Repite tu contraseña">
+                                    <div class="input-group-text" data-password="false">
+                                        <span class="password-eye"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Crear</button>
+                        </div>
+                        <div class="col-lg-6">
+
+                            <!-- end nav-->
+                            <div class="tab-content">
+                                <div class="tab-pane show active" id="checkbox-preview">
+
+
+                                    <h6 class="font-15 mt-3">Permisos</h6>
+
+
+                                    <div class="form-check form-checkbox-primary mb-2">
+                                        <input type="checkbox" class="form-check-input">
+                                        <label class="form-check-label">Acceso a bases de datos</label>
+                                    </div>
+                                    <div class="form-check form-checkbox-primary mb-2">
+                                        <input type="checkbox" class="form-check-input">
+                                        <label class="form-check-label">Creación de operaciones</label>
+                                    </div>
+                                    <div class="form-check form-checkbox-primary mb-2">
+                                        <input type="checkbox" class="form-check-input">
+                                        <label class="form-check-label">Creador de administradores</label>
+                                    </div>
+                                    <div class="form-check  form-checkbox-primary mb-2">
+                                        <input type="checkbox" class="form-check-input">
+                                        <label class="form-check-label">Acceso a inventarios</label>
+                                    </div>
+                                    <div class="form-check form-checkbox-primary mb-2">
+                                        <input type="checkbox" class="form-check-input">
+                                        <label class="form-check-label">Acceso a proveedores</label>
+                                    </div>
+                                    <div class="form-check form-checkbox-primary">
+                                        <input type="checkbox" class="form-check-input">
+                                        <label class="form-check-label">Creacion de clientes y empleados</label>
+                                    </div>
+
+                                </div>
+                                <!-- end preview-->
+
+
+                            </div>
+                            <!-- end preview code-->
+                        </div>
+                        <!-- end tab-content-->
+
+                    </div>
+                    <!-- end card-body -->
+                </form>
+                <!-- end row-->
+            </div>
+            <!-- end preview-->
+
+            <!-- end preview code-->
+        </div>
+        <!-- end tab-content-->
+
+    </div>
+    <!-- end card-body -->
+</div>

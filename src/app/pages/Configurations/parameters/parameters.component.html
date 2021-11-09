@@ -1,0 +1,322 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="header-title">Parámetros</h4>
+        <p class="text-muted font-14">
+            Visualiza y editalos
+        </p>
+
+        <ul class="nav nav-tabs nav-justified nav-bordered mb-3">
+            <li class="nav-item">
+                <a href="#employees_charge" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                    <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                    <span class="d-none d-md-block">Cargos de empleados</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#ports" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                    <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                    <span class="d-none d-md-block">Puertos</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#certificated" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                    <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                    <span class="d-none d-md-block">Certificados</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#turns" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                    <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                    <span class="d-none d-md-block">Turnos</span>
+                </a>
+            </li>
+
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="employees_charge">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form>
+                            <div class="mb-3">
+                                <label for="example-select" class="form-label">Nombre del cargo</label>
+                                <input type="text" id="name-charge" name="name-charge" class="form-control" placeholder="Nombre del cargo">
+
+                            </div>
+                            <div class="mb-3">
+                                <label for="hour-Valor" class="form-label">Valor horas</label>
+                                <input type="number" id="hour-Valor" name="hour-Valor" min="0" class="form-control" placeholder="Valor horas">
+                            </div>
+                            <div class="mb-3">
+                                <label for="example-select" class="form-label">Horario del cargo</label>
+                                <select class="form-select" id="example-select">
+                                <option>Diurno</option>
+                                <option>Nocturno</option>
+                               
+                            </select>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <table class="table table-centered mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Valor horas</th>
+                                    <th>Horario del cargo</th>
+                                    <th>Activo?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tarjador</td>
+                                    <td>$3500</td>
+                                    <td>Diurno</td>
+                                    <td>
+                                        <!-- Switch-->
+                                        <div>
+                                            <input type="checkbox" id="switch1" checked data-switch="success" />
+                                            <label for="switch1" data-off-label="No" class="mb-0 d-block"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Digitalizador</td>
+                                    <td>$2000</td>
+                                    <td>Nocturo</td>
+                                    <td>
+                                        <!-- Switch-->
+                                        <div>
+                                            <input type="checkbox" id="switch2" checked data-switch="success" />
+                                            <label for="switch2" data-off-label="No" class="mb-0 d-block"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Paul J. Friend</td>
+                                    <td>281-308-0793</td>
+                                    <td>September 1, 1939</td>
+                                    <td>
+                                        <!-- Switch-->
+                                        <div>
+                                            <input type="checkbox" id="switch3" data-switch="success" />
+                                            <label for="switch3" data-off-label="No" class="mb-0 d-block"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Operador montacargas</td>
+                                    <td>$1500</td>
+                                    <td>Diurno</td>
+                                    <td>
+                                        <!-- Switch-->
+                                        <div>
+                                            <input type="checkbox" id="switch4" data-switch="success" />
+                                            <label for="switch4" data-off-label="No" class="mb-0 d-block"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary" style="width: 100px;"><b>Crear</b></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane" id="ports">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form>
+                            <div class="mb-3">
+                                <label for="example-select" class="form-label">Nombre del puerto</label>
+                                <input type="text" id="name-charge" name="name-charge" class="form-control" placeholder="Nombre del puerto">
+
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="example-select" class="form-label">Requerimiento de certificado</label>
+                                <select class="form-select" id="example-select">
+                                <option>Selecciona una opción</option>
+                                <option>Si</option>
+                                <option>No</option>
+                               
+                            </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="hour-Valor" class="form-label">Vigencia de inducción</label>
+                                <select class="form-select" id="example-select">
+                                    <option selected="">N/A</option>
+                                    <option>3 meses</option>
+                                    <option>6 meses</option>
+                                    <option>1 año</option>
+                                   
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <table class="table table-centered mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Nombre del puerto</th>
+                                    <th>Requiere certificado</th>
+                                    <th>Vigencia de inducción</th>
+                                    <th>Activo?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Puerto Pimza</td>
+                                    <td>Si</td>
+                                    <td>1 año</td>
+                                    <td>
+                                        <!-- Switch-->
+                                        <div>
+                                            <input type="checkbox" id="switch1" checked data-switch="success" />
+                                            <label for="switch1" data-off-label="No" class="mb-0 d-block"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ZONA FRANCA ARGOS TERMINAL(CARTAGENA)</td>
+                                    <td>No</td>
+                                    <td>N/A</td>
+                                    <td>
+                                        <!-- Switch-->
+                                        <div>
+                                            <input type="checkbox" id="switch2" checked data-switch="success" />
+                                            <label for="switch2" data-off-label="No" class="mb-0 d-block"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary" style="width: 100px;"><b>Crear</b></button>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="certificated">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form>
+                            <div class="mb-3">
+                                <label for="example-select" class="form-label">Nombre del certificado</label>
+                                <input type="text" id="name-charge" name="name-charge" class="form-control" placeholder="Nombre del certificado">
+
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <table class="table table-centered mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Nombre del certificado</th>
+                                    <th>ID</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Curso 50 horas SST</td>
+                                    <td>23DJD3</td>
+                                </tr>
+                                <tr>
+                                    <td>Licencia SST vigente</td>
+                                    <td>854JFD33</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary" style="width: 100px;"><b>Crear</b></button>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="turns">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <form>
+                            <div class="mb-3">
+                                <label for="example-select" class="form-label">Descripción</label>
+                                <input type="text" id="name-charge" name="name-charge" class="form-control" placeholder="Descripción del turno">
+
+                            </div>
+                            <div class="mb-3">
+                                <label for="hour-Valor" class="form-label">Abreviación</label>
+                                <input type="text" id="hour-Valor" name="hour-Valor" min="0" class="form-control" placeholder="Abreviación">
+                            </div>
+                            <div class="mb-3">
+                                <label for="example-select" class="form-label">Valor</label>
+                                <input type="number" name="turn-value" id="" class="form-control" placeholder="Valor a pagar por el turno">
+                            </div>
+                            <div class="mb-3">
+                                <label for="turn-comments" class="form-label">Comentarios</label>
+                                <input type="text" id="turn-comments" name="turn-comments" min="0" class="form-control" placeholder="Comentarios del turno">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-7 ">
+                        <table class="table table-centered mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <th>Abreviación</th>
+                                    <th>Valor</th>
+                                    <th>Comentarios</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Turno 8 hrs Diurno</td>
+                                    <td>8DI</td>
+                                    <td>$ 40,350</td>
+                                    <td>
+                                        <!-- Switch-->
+                                        Transporte
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Turno 8 Hrs Nocturno</td>
+                                    <td>8NO</td>
+                                    <td>$ 46,550</td>
+                                    <td>Transporte</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Turno 8 Hrs Domingos y festivos Diurno</td>
+                                    <td>8DD</td>
+                                    <td>$ 63,100</td>
+                                    <td>
+                                        <!-- Switch-->
+                                        No aplica transporte
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Turno 8 Hrs Domingos y festivos Nocturno</td>
+                                    <td>8DN</td>
+                                    <td>$ 64,000</td>
+                                    <td>
+                                        No aplica transporte
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary" style="width: 100px;"><b>Crear</b></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end card-body -->
+</div>
