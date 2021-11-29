@@ -5,8 +5,9 @@ import { OperationsClientComponent } from './operations-client/operations-client
 import { CreateClientsComponent } from './create-clients/create-clients.component';
 import { OperationsComponent } from './operations/operations.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OperationsEmployeesJobsComponent } from './operations-employees-jobs/operations-employees-jobs.component';
+import { ValidateEmailClientComponent } from './validate-email-client/validate-email-client.component';
 
 
 @NgModule({
@@ -15,12 +16,15 @@ import { OperationsEmployeesJobsComponent } from './operations-employees-jobs/op
     CreateClientsComponent,
     OperationsComponent,
     OperationsClientDetailsComponent,
-    OperationsEmployeesJobsComponent
+    OperationsEmployeesJobsComponent,
+    ValidateEmailClientComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule
   ], 
   
 })

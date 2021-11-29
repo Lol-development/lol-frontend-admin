@@ -24,6 +24,7 @@ import { EditEmployeeComponent } from './Employees/edit-employee/edit-employee.c
 import { MailboxComponent } from './Malibox-group/mailbox/mailbox.component';
 import { ResponseComponent } from './Malibox-group/response/response.component';
 import { OperationsEmployeesJobsComponent } from './Clients/operations-employees-jobs/operations-employees-jobs.component';
+import { ValidateEmailComponent } from './Administratives/validate-email/validate-email.component';
 
 
 

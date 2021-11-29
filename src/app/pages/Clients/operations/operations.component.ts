@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-operations',
@@ -7,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class OperationsComponent implements OnInit {
-
-  constructor() { }
+  public clients:any[] = [];
+  constructor(private clientSvc:ClientService) { }
 
   ngOnInit(): void {
+    this.getClients();
   }
-
+  getClients(){
+    this.clientSvc.getClients() 
+        .subscribe((resp:any)=> {
+          this.clients = resp.data.clients;
+          console.log(this.clients);
+        })
+  }
 }

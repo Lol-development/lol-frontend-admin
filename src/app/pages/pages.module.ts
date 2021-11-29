@@ -17,6 +17,8 @@ import { ConfigurationsModule } from './Configurations/configurations.module';
 import { EmployeesModule } from './Employees/employees.module';
 import { TeamsModule } from './Teams/teams.module';
 import { MailboxGroupModule } from './Malibox-group/mailbox-group.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdministrativesModule } from './Administratives/administratives.module';
 
 
 
@@ -38,6 +40,9 @@ import { MailboxGroupModule } from './Malibox-group/mailbox-group.module';
     EmployeesModule,
     MailboxGroupModule,
     TeamsModule,
+    AdministrativesModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class PagesModule { }

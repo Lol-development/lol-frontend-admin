@@ -11,93 +11,78 @@
 
                 <div class="tab-content">
                     <div class="tab-pane show active" id="input-types-preview">
-                        <form>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="avatar-lg">
-                                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle img-thumbnail">
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <label for="example-fileinput" class="form-label">Foto de perfíl</label>
-                                                <input type="file" id="example-fileinput" class="form-control">
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="avatar-lg">
+                                                <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle img-thumbnail">
                                             </div>
                                         </div>
-
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="nameInput" class="form-label">Nombre de la empresa</label>
-                                        <input type="text" id="nameInput" class="form-control" placeholder="Nombre de la empresa">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="NitInput" class="form-label">Nit</label>
-                                        <input type="text" id="NitInput" class="form-control" placeholder="Nit del cliente">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="Responsable-input" class="form-label">Responsable</label>
-                                        <input type="text" id="Responsable-input" class="form-control" placeholder="Responsable">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="validationTooltip03">Cargo</label>
-                                        <select class="form-select mb-3">
-                                            <option selected>Cargos Disponibles</option>
-                                            <option value="1">Digitalizador</option>
-                                            <option value="2">Operador de montacargas</option>
-                                            <option value="3">Tarjador</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="example-password" class="form-label">Contraseña</label>
-                                        <input type="password" id="example-password" class="form-control" value="password">
-                                    </div>
-
-
-                                </div>
-                                <!-- end col -->
-
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="email-fileinput" class="form-label">Correo</label>
-                                        <input type="email" id="email-fileinput" class="form-control" placeholder="Correo del cliente">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="address-date" class="form-label">Dirección</label>
-                                        <input class="form-control" id="address-date" type="text" name="address" placeholder="Dirección del cliente">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="example-phone" class="form-label">Teléfono</label>
-                                        <input class="form-control" id="example-phone" type="number" placeholder="Teléfono del cliente" name="phone-nombre">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="social-media" class="form-label">Redes Sociales</label>
-                                        <input class="form-control" id="social-media" type="text" placeholder="Redes sociales del cliente" name="social-media">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Repite la contraseña</label>
-                                        <div class="input-group input-group-merge">
-                                            <input type="password" id="password" class="form-control" placeholder="Ingresa de nuevo tu contraseña">
-                                            <div class="input-group-text" data-password="false">
-                                                <span class="password-eye"></span>
-                                            </div>
+                                        <div class="col">
+                                            <label for="example-fileinput" class="form-label">Foto de perfíl</label>
+                                            <input type="file" id="example-fileinput" class="form-control">
                                         </div>
                                     </div>
 
-
                                 </div>
-                                <!-- end col -->
-                                <div class="col-lg-12">
-
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                <!-- CLIENT NAME -->
+                                <div class="mb-3">
+                                    <label for="nameInput" class="form-label">Nombre de la empresa</label>
+                                    <input type="text" [(ngModel)]="client_name" id="nameInput" class="form-control" placeholder="Nombre de la empresa">
+                                </div>
+                                <!-- CLIENT CHARGE NAME -->
+                                <div class="mb-3">
+                                    <label for="Responsable-input" class="form-label">Responsable</label>
+                                    <input type="text" id="Responsable-input" [(ngModel)]="client_name_charge" class="form-control" placeholder="Responsable">
+                                </div>
+                                <!-- PASSWORD -->
+                                <div class="mb-3">
+                                    <label for="example-password" class="form-label">Contraseña</label>
+                                    <input type="password" id="example-password" [(ngModel)]="password1" class="form-control" placeholder="password">
                                 </div>
                             </div>
-                        </form>
+                            <!-- end col -->
+                            <div class="col-lg-6">
+                                <!-- CLIENT EMAIL -->
+                                <div class="mb-3">
+                                    <label for="email-fileinput" class="form-label">Correo</label>
+                                    <input type="email" [(ngModel)]="email" id="email-fileinput" class="form-control" placeholder="Correo del cliente">
+                                </div>
+                                <!-- CLIENT ADDRESS -->
+                                <div class="mb-3">
+                                    <label for="address-date" class="form-label">Dirección</label>
+                                    <input class="form-control" [(ngModel)]="address" id="address-date" type="text" name="address" placeholder="Dirección del cliente">
+                                </div>
+                                <!-- CLIENT PHONE -->
+                                <div class="mb-3">
+                                    <label for="example-phone" class="form-label">Teléfono</label>
+                                    <input class="form-control" [(ngModel)]="phone_number" id="example-phone" type="number" placeholder="Teléfono del cliente" name="phone-nombre">
+                                </div>
+                                <!-- CLIENT SOCIAL MEDIa -->
+                                <div class="mb-3">
+                                    <label for="social-media" class="form-label">Redes Sociales</label>
+                                    <input class="form-control" [(ngModel)]="social_linkedin" id="social-media" type="text" placeholder="Redes sociales del cliente" name="social-media">
+                                </div>
+                                <!-- CLIENT REPEAT PASSWORD -->
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Repite la contraseña</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" id="password" [(ngModel)]="password" class="form-control" placeholder="Ingresa de nuevo tu contraseña">
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- end col -->
+                            <div class="col-lg-12">
+                                <button type="submit" (click)="createClient()" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </div>
+
                         <!-- end row-->
                     </div>
                     <!-- end preview-->

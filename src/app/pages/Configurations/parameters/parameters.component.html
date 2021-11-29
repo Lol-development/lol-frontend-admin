@@ -129,66 +129,32 @@
             <div class="tab-pane" id="ports">
                 <div class="row">
                     <div class="col-lg-6">
-                        <form>
-                            <div class="mb-3">
-                                <label for="example-select" class="form-label">Nombre del puerto</label>
-                                <input type="text" id="name-charge" name="name-charge" class="form-control" placeholder="Nombre del puerto">
+                        <div class=" mb-3 ">
+                            <label for="example-select" class="form-label">Nombre del puerto</label>
+                            <input type="text" id="name-charge" [(ngModel)]="port_name" name="name-charge" class="form-control" placeholder="Nombre del puerto">
 
-                            </div>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100px;" (click)="createNewPort()"><b>Crear</b></button>
 
-                            <div class="mb-3">
-                                <label for="example-select" class="form-label">Requerimiento de certificado</label>
-                                <select class="form-select" id="example-select">
-                                <option>Selecciona una opción</option>
-                                <option>Si</option>
-                                <option>No</option>
-                               
-                            </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="hour-Valor" class="form-label">Vigencia de inducción</label>
-                                <select class="form-select" id="example-select">
-                                    <option selected="">N/A</option>
-                                    <option>3 meses</option>
-                                    <option>6 meses</option>
-                                    <option>1 año</option>
-                                   
-                                </select>
-                            </div>
-                        </form>
                     </div>
                     <div class="col-lg-6">
                         <table class="table table-centered mb-0">
                             <thead>
                                 <tr>
                                     <th>Nombre del puerto</th>
-                                    <th>Requiere certificado</th>
-                                    <th>Vigencia de inducción</th>
-                                    <th>Activo?</th>
+
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Puerto Pimza</td>
-                                    <td>Si</td>
-                                    <td>1 año</td>
+                                <tr *ngFor="let port of ports">
+                                    <td>{{port.name}} </td>
+
                                     <td>
                                         <!-- Switch-->
                                         <div>
-                                            <input type="checkbox" id="switch1" checked data-switch="success" />
-                                            <label for="switch1" data-off-label="No" class="mb-0 d-block"></label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>ZONA FRANCA ARGOS TERMINAL(CARTAGENA)</td>
-                                    <td>No</td>
-                                    <td>N/A</td>
-                                    <td>
-                                        <!-- Switch-->
-                                        <div>
-                                            <input type="checkbox" id="switch2" checked data-switch="success" />
-                                            <label for="switch2" data-off-label="No" class="mb-0 d-block"></label>
+
+                                            <i class="mdi mdi-delete text-danger"></i>
                                         </div>
                                     </td>
                                 </tr>
@@ -197,7 +163,6 @@
                         </table>
                     </div>
                     <div class="col-sm-12">
-                        <button class="btn btn-primary" style="width: 100px;"><b>Crear</b></button>
                     </div>
                 </div>
             </div>
