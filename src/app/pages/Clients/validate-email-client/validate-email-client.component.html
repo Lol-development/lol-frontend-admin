@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="d-grid mb-0 text-center">
-                        <button class="btn btn-success" [disabled]="verifyEmailForm.invalid" type="submit"><i class="mdi mdi-login"></i> Válidar </button>
+                        <button class="btn btn-success" [disabled]="verifyEmailForm.invalid" type="submit"><i *ngIf="charge === false" class="mdi mdi-login"></i> <i *ngIf="charge === true" class=" mdi-spin"></i> Válidar </button>
                     </div>
                     <!-- social-->
 

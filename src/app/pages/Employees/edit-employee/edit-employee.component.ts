@@ -1,4 +1,5 @@
 import { ThrowStmt } from '@angular/compiler';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
@@ -50,7 +51,24 @@ export class EditEmployeeComponent implements OnInit {
   port: any;
   date_realization: any;
   date_expiration: any;
+  date_realization_certificate: any;
   public ports:any[] = [];
+  public employeCertificate:any[] = [];
+  public certificate:any[] = [];
+  public medicalTest:any[] = [];
+  public CNCL:any[] = [];
+  public CNCList:any[] = [];
+  certificate_id: any;
+  entity: any;
+  date_expiration_certificate: any;
+  mt_entity: any;
+  mt_date_realization: any;
+  mt_type: any;
+  mt_date_expiration: any;
+  position_id: any;
+  entity_cncl: any;
+  date_realization_cncl: any;
+  date_expiration_cncl: any;
   constructor(private globalSvc: GlobalService, private activatedRoute:ActivatedRoute, private employeSvc:EmployeeService) { }
 
   ngOnInit(): void {
@@ -61,6 +79,11 @@ export class EditEmployeeComponent implements OnInit {
     this.getEmployeeByID();
     this.getHSQInductions();
     this.getPorts();
+    this.getCertifatesEmployee();
+    this.getAvaibleCertificates();
+    this.getMedicTestEmployee();
+    this.getCNCLEmployee();
+    this.getCNCLAvaible();
   }
 
 
@@ -73,7 +96,6 @@ export class EditEmployeeComponent implements OnInit {
   getEmployeeByID(){
     this.employeSvc.getEmployeById(this.ID)
         .subscribe((resp:any) => {
-          console.log(resp)
           this.fullname = resp.data.employee.fullname;
           this.document_type_id = resp.data.employee.document_type.id;
           this.document_type_name = resp.data.employee.document_type.name;
@@ -108,7 +130,6 @@ export class EditEmployeeComponent implements OnInit {
           
     })
   }
-
   updateEmployee(){
       const body = {
         document_type_id: this.document_type_id,
@@ -144,37 +165,28 @@ export class EditEmployeeComponent implements OnInit {
     }
     this.employeSvc.updateEmployee(this.ID, body)
               .subscribe((resp:any) => {
-                console.log(resp)
-                console.log(body)
                 if (resp.error === false) {
-                  Swal.fire('Exito', resp.message, 'success')
+                  Swal.fire('Exito', resp.message, 'success');
                 } else{
-                  Swal.fire('Oooops', resp.message, 'error')
+                  Swal.fire('Oooops', resp.message, 'error');
                 }
               })
   }
-
   getHSQInductions(){
     this.globalSvc.getInductionsEmployee(this.ID)
             .subscribe((resp :any)=> {
               this.inductions = resp.data.HSQInductionsList;
-              console.log(this.inductions);
             })
   }
-
   createInduction(){
     const body = {
-     
       port_id: this.port,
       employee_id: this.ID,
       date_realization: this.date_realization,
       date_expiration:this.date_expiration
-  
     }
     this.globalSvc.createHSQInduction(body)
           .subscribe((resp:any) =>{
-            console.log(resp);
-            console.log(body);
             if (resp.error === false) {
               Swal.fire('Exito', resp.message, 'success')
               this.getHSQInductions();
@@ -186,8 +198,95 @@ export class EditEmployeeComponent implements OnInit {
   getPorts(){
     this.globalSvc.getPorts()
           .subscribe((resp:any) => {
-            console.log(resp)
             this.ports = resp.data;
           })
+  }
+  getCertifatesEmployee(){
+    this.employeSvc.getAsignCertificateEmployee(this.ID)
+                .subscribe((resp:any) => {
+                  this.employeCertificate = resp.data;
+                })
+  }
+  asignCertificate(){
+    const body = {
+    employee_id: this.ID,
+    certificate_id:this.certificate_id ,
+    entity: this.entity,
+    date_realization: this.date_realization_certificate,
+    date_expiration: this.date_expiration_certificate
+    }
+    this.employeSvc.asignCertificate(body)
+            .subscribe((resp:any) => {
+              console.log(resp);
+              if (resp.error === false) {
+                  Swal.fire('Exito', resp.message , 'success');
+                  this.getCertifatesEmployee();
+              }else {
+                Swal.fire('Oooops', resp.message, 'error');
+              }
+            })
+  }
+  getAvaibleCertificates(){
+    this.globalSvc.getAllCertificates()
+          .subscribe((resp:any) => {
+            this.certificate = resp.data;
+          })
+  }
+  getMedicTestEmployee(){
+    this.employeSvc.getMedicalEmployeeTest(this.ID)
+              .subscribe((resp:any) => {
+                this.medicalTest = resp.data;
+              })
+  }
+  createMedicalTest(){
+    const body = {
+      employee_id:this.ID,
+      entity: this.mt_entity,
+      date_realization: this.mt_date_realization,
+      date_expiration: this.mt_date_expiration,
+      type: this.mt_type
+    }
+    this.employeSvc.createMedicalTest(body)
+              .subscribe((resp:any) => {
+                if (resp.error === false) {
+                  Swal.fire('Exito', resp.message, 'success');
+                  this.getMedicTestEmployee();
+                } else {
+                  Swal.fire('Oooops', resp.message, 'error')
+                }
+              })
+  }
+
+  asignCNCL(){
+    const body = {
+      employee_id: this.ID,
+      position_id:this.position_id,
+      entity:this.entity_cncl,
+      date_realization: this.date_realization_cncl,
+      date_expiration: this.date_expiration_cncl
+    }
+    this.employeSvc.asignCNCL(body)
+          .subscribe((resp:any) => {
+            if (resp.error === false) {
+              Swal.fire('Exito', resp.message, 'success');
+              this.getCNCLEmployee()
+            } else {
+              Swal.fire('Oooops', resp.message, 'error');
+            }
+          })
+  }
+
+  getCNCLEmployee(){
+      this.employeSvc.getCNCLEmploye(this.ID)
+              .subscribe((resp:any) => {
+                this.CNCL = resp.data;
+              })
+  }
+
+  getCNCLAvaible(){
+     this.globalSvc.getCharges()
+            .subscribe((resp:any) => {
+                this.CNCList = resp.data;
+            })
   }
 }

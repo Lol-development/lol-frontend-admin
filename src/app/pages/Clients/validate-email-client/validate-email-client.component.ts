@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
   ]
 })
 export class ValidateEmailClientComponent implements OnInit {
-
+  public charge:boolean = false;
   public verifyEmailForm = this.fb.group({
     code: ['', Validators.required],
  });
@@ -22,6 +22,7 @@ export class ValidateEmailClientComponent implements OnInit {
   }
 
   validateEmail(){
+    this.charge == true
     const verifyForm = {
       'code_id':  localStorage.getItem('code_id') ,
       'code_asign': `${this.verifyEmailForm.controls['code'].value}`,
@@ -38,8 +39,10 @@ export class ValidateEmailClientComponent implements OnInit {
                 }
                 this.clientSvc.validateEmail(body)
                       .subscribe((resp:any) => {
+                        this.charge === false
+
                         console.log(resp);
-                        if (resp.data.validateEmail) {
+                        if (resp.error === false) {
                          
                           this.router.navigateByUrl('/Home/Operations');
                           localStorage.clear();
@@ -48,7 +51,7 @@ export class ValidateEmailClientComponent implements OnInit {
               } else if (!resp.data.ok) {
                 console.log(resp)
                 Swal.fire('Ooops', 'código incorrecto', 'error')
-
+                this.charge == false
               }
             })
   }

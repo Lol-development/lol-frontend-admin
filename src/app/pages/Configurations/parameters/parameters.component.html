@@ -37,26 +37,25 @@
             <div class="tab-pane active" id="employees_charge">
                 <div class="row">
                     <div class="col-lg-6">
-                        <form>
-                            <div class="mb-3">
-                                <label for="example-select" class="form-label">Nombre del cargo</label>
-                                <input type="text" id="name-charge" name="name-charge" class="form-control" placeholder="Nombre del cargo">
+                        <div class="mb-3">
+                            <label for="example-select" class="form-label">Nombre del cargo</label>
+                            <input type="text" [(ngModel)]="charge_name" id="name-charge" name="name-charge" class="form-control" placeholder="Nombre del cargo">
 
-                            </div>
-                            <div class="mb-3">
-                                <label for="hour-Valor" class="form-label">Valor horas</label>
-                                <input type="number" id="hour-Valor" name="hour-Valor" min="0" class="form-control" placeholder="Valor horas">
-                            </div>
-                            <div class="mb-3">
-                                <label for="example-select" class="form-label">Horario del cargo</label>
-                                <select class="form-select" id="example-select">
-                                <option>Diurno</option>
-                                <option>Nocturno</option>
+                        </div>
+                        <div class="mb-3">
+                            <label for="hour-Valor" class="form-label">Valor horas</label>
+                            <input type="number" [(ngModel)]="hour_value" id="hour-Valor" name="hour-Valor" min="0" class="form-control" placeholder="Valor horas">
+                        </div>
+                        <div class="mb-3">
+                            <label for="example-select" class="form-label">Horario del cargo</label>
+                            <select class="form-select" [(ngModel)]="horary" id="example-select">
+                                <option selected disabled>Selecciona un horario para el cargo</option>
+                                <option value="Diurno">Diurno</option>
+                                <option value="Nocturno">Nocturno</option>
                                
                             </select>
-                            </div>
+                        </div>
 
-                        </form>
                     </div>
                     <div class="col-lg-6">
                         <table class="table table-centered mb-0">
@@ -65,63 +64,21 @@
                                     <th>Nombre</th>
                                     <th>Valor horas</th>
                                     <th>Horario del cargo</th>
-                                    <th>Activo?</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Tarjador</td>
-                                    <td>$3500</td>
-                                    <td>Diurno</td>
-                                    <td>
-                                        <!-- Switch-->
-                                        <div>
-                                            <input type="checkbox" id="switch1" checked data-switch="success" />
-                                            <label for="switch1" data-off-label="No" class="mb-0 d-block"></label>
-                                        </div>
-                                    </td>
+                                <tr *ngFor="let charge of charges">
+                                    <td>{{charge.name}}</td>
+                                    <td>{{charge.hour_value}} </td>
+                                    <td>{{charge.horary}}</td>
+
                                 </tr>
-                                <tr>
-                                    <td>Digitalizador</td>
-                                    <td>$2000</td>
-                                    <td>Nocturo</td>
-                                    <td>
-                                        <!-- Switch-->
-                                        <div>
-                                            <input type="checkbox" id="switch2" checked data-switch="success" />
-                                            <label for="switch2" data-off-label="No" class="mb-0 d-block"></label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Paul J. Friend</td>
-                                    <td>281-308-0793</td>
-                                    <td>September 1, 1939</td>
-                                    <td>
-                                        <!-- Switch-->
-                                        <div>
-                                            <input type="checkbox" id="switch3" data-switch="success" />
-                                            <label for="switch3" data-off-label="No" class="mb-0 d-block"></label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Operador montacargas</td>
-                                    <td>$1500</td>
-                                    <td>Diurno</td>
-                                    <td>
-                                        <!-- Switch-->
-                                        <div>
-                                            <input type="checkbox" id="switch4" data-switch="success" />
-                                            <label for="switch4" data-off-label="No" class="mb-0 d-block"></label>
-                                        </div>
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
                     <div class="col-sm-12">
-                        <button class="btn btn-primary" style="width: 100px;"><b>Crear</b></button>
+                        <button class="btn btn-primary" type="button" (click)="createCharge()" style="width: 100px;"><b>Crear</b></button>
                     </div>
                 </div>
 
@@ -138,7 +95,12 @@
 
                     </div>
                     <div class="col-lg-6">
-                        <table class="table table-centered mb-0">
+                        <div class="alert alert-success" role="alert" *ngIf="ports.length  === 0">
+                            <h4 class="alert-heading text-center">No hay puertos disponibles</h4>
+                            <p></p>
+                            <p class="mb-0 text-center">Crea uno nuevo!</p>
+                        </div>
+                        <table class="table table-centered mb-0" *ngIf="ports.length  > 0">
                             <thead>
                                 <tr>
                                     <th>Nombre del puerto</th>
@@ -169,40 +131,33 @@
             <div class="tab-pane" id="certificated">
                 <div class="row">
                     <div class="col-lg-6">
-                        <form>
-                            <div class="mb-3">
-                                <label for="example-select" class="form-label">Nombre del certificado</label>
-                                <input type="text" id="name-charge" name="name-charge" class="form-control" placeholder="Nombre del certificado">
+                        <div class="mb-3">
+                            <label for="example-select" class="form-label">Nombre del certificado</label>
+                            <input type="text" id="name-charge" [(ngModel)]="name" name="name-charge" class="form-control" placeholder="Nombre del certificado">
+                        </div>
 
-                            </div>
-
-
-                        </form>
                     </div>
                     <div class="col-lg-6">
                         <table class="table table-centered mb-0">
                             <thead>
                                 <tr>
                                     <th>Nombre del certificado</th>
+                                    <th>Tipo</th>
                                     <th>ID</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Curso 50 horas SST</td>
-                                    <td>23DJD3</td>
+                                <tr *ngFor="let c of certificates">
+                                    <td>{{c.name}}</td>
+                                    <td>{{c.type}}</td>
+                                    <td>{{c.id}} </td>
                                 </tr>
-                                <tr>
-                                    <td>Licencia SST vigente</td>
-                                    <td>854JFD33</td>
-                                </tr>
-
                             </tbody>
                         </table>
                     </div>
                     <div class="col-sm-12">
-                        <button class="btn btn-primary" style="width: 100px;"><b>Crear</b></button>
+                        <button class="btn btn-primary" style="width: 100px;" (click)="createCertificate()"><b>Crear</b></button>
                     </div>
                 </div>
             </div>

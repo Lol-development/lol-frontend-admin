@@ -34,5 +34,29 @@ export class EmployeeService {
     const url = `${this.base_url}/employee/update/${id}`;
     return this.http.put(url, data, this.header);
   }
+  asignCertificate(data:{}){
+     const url = `${this.base_url}/asigncertificates/create`;
+     return this.http.post(url, data, this.header);
+  }
+  getAsignCertificateEmployee(id:string){
+    const url = `${this.base_url}/asigncertificates/getforemploye/${id}`;
+    return this.http.get(url, this.header);
+  }
+  getMedicalEmployeeTest(id:string){
+    const url = `${this.base_url}/medicalexams/getforemploye/${id}`;
+    return this.http.get(url, this.header);
+  }
+  createMedicalTest(data:{}){
+    const url = `${this.base_url}/medicalexams/create`;
+    return this.http.post(url, data, this.header);
+  }
 
+  getCNCLEmploye(id:string){
+    const url = `${this.base_url}/cncl/getforemploye/${id}`;
+    return this.http.get(url, this.header);
+  }
+  asignCNCL(data:{}){
+    const url = `${this.base_url}/cncl/create`;
+    return this.http.post(url, data , this.header);
+  }
 }

@@ -195,11 +195,6 @@
                 </div>
 
             </div>
-
-
-
-            <!-- end row-->
-
             <div class="tab-pane " id="certificados">
                 <div class="app-search d-flex w-100 justify-content-between">
                     <div class="mb-2 position-relative ">
@@ -222,26 +217,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Curso TSA Avanzado</td>
-                                <td>TSA company</td>
-                                <td>15/07/2021</td>
-                                <td>15/012/2021</td>
+                            <tr *ngFor="let c of employeCertificate">
+                                <td>{{c.certificate.name}} </td>
+                                <td>{{c.entity}} </td>
+                                <td>{{c.date_realization}} </td>
+                                <td>{{c.date_expiration}} </td>
                                 <td class="table-action">
                                     <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
-
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Curso TSA Reentrenamiento</td>
-                                <td>TSA company</td>
-                                <td>15/07/2021</td>
-                                <td>15/012/2021</td>
-                                <td class="table-action">
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
 
-                                </td>
-                            </tr>
 
                         </tbody>
                     </table>
@@ -276,36 +261,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Ingreso</td>
-                                <td>Eps Sura</td>
-                                <td>12/03/2021</td>
-                                <td>15/12/2021</td>
+                            <tr *ngFor="let mt of medicalTest">
+                                <td>{{mt.type}}</td>
+                                <td>{{mt.entity}} </td>
+                                <td>{{mt.date_realization}} </td>
+                                <td>{{mt.date_expiration}} </td>
                                 <td class="table-action">
                                     <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
 
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Periódico</td>
-                                <td>EPS new-healthy</td>
-                                <td>15/07/2021</td>
-                                <td>15/012/2021</td>
-                                <td class="table-action">
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TSA</td>
-                                <td>TSA entidad</td>
-                                <td>25/04/2021</td>
-                                <td>30/12/2021</td>
-                                <td class="table-action">
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
-
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -340,46 +306,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>operario de grúa de buques</td>
-                                <td>SENA</td>
-                                <td>12/03/2021</td>
-                                <td>15/12/2021</td>
+                            <tr *ngFor="let cncl of CNCL">
+                                <td>{{cncl.position.name}} </td>
+                                <td>{{cncl.entity}}</td>
+                                <td>{{cncl.date_realization}}</td>
+                                <td>{{cncl.date_expiration}} </td>
                                 <td class="table-action">
                                     <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
 
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Operario de montacargas</td>
-                                <td>Platzi</td>
-                                <td>15/07/2021</td>
-                                <td>15/012/2021</td>
-                                <td class="table-action">
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Estibador</td>
-                                <td>Estibalearn</td>
-                                <td>25/04/2021</td>
-                                <td>30/12/2021</td>
-                                <td class="table-action">
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Portalonero</td>
-                                <td>Udemy</td>
-                                <td>25/04/2021</td>
-                                <td>30/12/2021</td>
-                                <td class="table-action">
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
-
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -465,27 +402,27 @@
                 <div class="date-container d-flex justify-content-between">
                     <div class="mb-3">
                         <label class="form-label">Fechas emisión</label>
-                        <input type="date" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
+                        <input type="date" [(ngModel)]="date_realization_certificate" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Fechas vencimiento</label>
-                        <input type="date" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
+                        <input type="date" [(ngModel)]="date_expiration_certificate" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Entidad</label>
-                    <input type="text" class="form-control " id="entity" placeholder="Nombre de entidad">
+                    <input type="text" class="form-control" [(ngModel)]="entity" id="entity" placeholder="Nombre de entidad">
                 </div>
 
-                <select class="form-select mb-3">
-                    <option selected="">Seleccionar certificado</option>
-                    <option value="1">Curso  TSA Avanzado</option>
-                    <option value="2">Curso TSA Reentrenamiento</option>
+                <select class="form-select mb-3" [(ngModel)]="certificate_id">
+                    <option selected="" disabled>Seleccionar certificado</option>
+                    <option *ngFor="let c of certificate" [value]="c.id">{{c.name}} </option>
+
                 </select>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-primary" (click)="asignCertificate()">Guardar</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -506,29 +443,29 @@
                 <div class="date-container d-flex justify-content-between">
                     <div class="mb-3">
                         <label class="form-label">Fechas emisión</label>
-                        <input type="date" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
+                        <input type="date" [(ngModel)]="mt_date_realization" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Fechas vencimiento</label>
-                        <input type="date" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
+                        <input type="date" [(ngModel)]="mt_date_expiration" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Entidad</label>
-                    <input type="text" class="form-control " id="entity" placeholder="Nombre de entidad">
+                    <input type="text" [(ngModel)]="mt_entity" class="form-control " id="entity" placeholder="Nombre de entidad">
                 </div>
 
-                <select class="form-select mb-3">
-                    <option selected="">Seleccionar tipo de examen médicos</option>
-                    <option value="1">Ingreso</option>
-                    <option value="2">Periódico</option>
-                    <option value="3">Retiro</option>
-                    <option value="4">TSA</option>
+                <select class="form-select mb-3" [(ngModel)]="mt_type"> 
+                    <option selected="" disabled>Seleccionar tipo de examen médicos</option>
+                    <option value="Ingreso">Ingreso</option>
+                    <option value="Periódico">Periódico</option>
+                    <option value="Retiro">Retiro</option>
+                    <option value="TSA">TSA</option>
                 </select>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" (click)="createMedicalTest()" class="btn btn-primary">Guardar</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -549,32 +486,28 @@
                 <div class="date-container d-flex justify-content-between">
                     <div class="mb-3">
                         <label class="form-label">Fechas emisión</label>
-                        <input type="date" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
+                        <input type="date" [(ngModel)]="date_realization_cncl" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Fechas vencimiento</label>
-                        <input type="date" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
+                        <input type="date" [(ngModel)]="date_expiration_cncl" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Entidad</label>
-                    <input type="text" class="form-control " id="entity" placeholder="Nombre de entidad">
+                    <input type="text" [(ngModel)]="entity_cncl" class="form-control " id="entity" placeholder="Nombre de entidad">
                 </div>
 
-                <select class="form-select mb-3">
-                    <option selected="">Seleccionar certificación en normas de competencia laboral </option>
-                    <option value="1">Operario de grúa de buques</option>
-                    <option value="2">Operario de montacargas</option>
-                    <option value="3">Portalonero</option>
-                    <option value="4">Estibador</option>
-                    <option value="4">Tarja</option>
+                <select class="form-select mb-3" [(ngModel)]="position_id">
+                    <option selected="" disabled>Seleccionar certificación en normas de competencia laboral </option>
+                    <option *ngFor="let cnlist of CNCList" [value]="cnlist.id">{{cnlist.name}} </option>
                   
                    
                 </select>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-primary" (click)="asignCNCL()">Guardar</button>
             </div>
         </div>
         <!-- /.modal-content -->

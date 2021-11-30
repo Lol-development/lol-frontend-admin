@@ -41,4 +41,20 @@ export class GlobalService {
     const url = `${this.base_url}/hsqinductions/getforemployee/${id}`;
    return this.http.get(url, this.header);
   }
+  getAllCertificates(){
+    const url = `${this.base_url}/certificates/getall`;
+    return this.http.get(url, this.header);
+  }
+  createCertificates(data:{}){
+    const url = `${this.base_url}/certificates/create`;
+     return   this.http.post(url ,data, this.header);
+  }
+  getCharges(){
+    const url = `${this.base_url}/positions/getall`;
+    return this.http.get(url, this.header);
+  } 
+  createCharges(data:{}){
+    const url = `${this.base_url}/positions/create`;
+    return this.http.post(url, data, this.header);
+  }
 }
