@@ -48,7 +48,9 @@ export class CreateClientsComponent implements OnInit {
                           console.log(resp)
                           if (resp.error === false) {
                               localStorage.setItem('code_id', resp.data.code_id)
-                              this.router.navigateByUrl('/Validate-email')
+                              localStorage.setItem('email_client', registerForm.email)
+                              this.router.navigateByUrl('/Validate-email-client')
+                              console.log(resp)
                           }
                         })
               } else {

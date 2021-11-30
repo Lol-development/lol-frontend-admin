@@ -223,7 +223,7 @@
                                 <td>{{c.date_realization}} </td>
                                 <td>{{c.date_expiration}} </td>
                                 <td class="table-action">
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
+                                    <a (click)="deleteCertificate(c.id)" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
                                 </td>
                             </tr>
 
@@ -267,7 +267,7 @@
                                 <td>{{mt.date_realization}} </td>
                                 <td>{{mt.date_expiration}} </td>
                                 <td class="table-action">
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
+                                    <a (click)="deleteMedicalTest(mt.id)" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
 
                                 </td>
                             </tr>
@@ -312,7 +312,7 @@
                                 <td>{{cncl.date_realization}}</td>
                                 <td>{{cncl.date_expiration}} </td>
                                 <td class="table-action">
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
+                                    <a (click)="deleteCNCLAsign(cncl.id)" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
 
                                 </td>
                             </tr>
@@ -361,7 +361,7 @@
                                 <td>{{i.date_realization}} </td>
                                 <td>{{i.date_expiration}} </td>
                                 <td class="table-action">
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
+                                    <a (click)="deleteInduction(i.id)" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
                                 </td>
                             </tr>
 

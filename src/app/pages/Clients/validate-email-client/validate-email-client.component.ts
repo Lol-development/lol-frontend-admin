@@ -35,7 +35,7 @@ export class ValidateEmailClientComponent implements OnInit {
               if (resp.error === false) {
                 console.log(resp)
                 const body  =  {
-                  email: localStorage.getItem('email')
+                  email: localStorage.getItem('email_client')
                 }
                 this.clientSvc.validateEmail(body)
                       .subscribe((resp:any) => {
@@ -45,7 +45,9 @@ export class ValidateEmailClientComponent implements OnInit {
                         if (resp.error === false) {
                          
                           this.router.navigateByUrl('/Home/Operations');
-                          localStorage.clear();
+                       
+                        } else {
+                          Swal.fire('Ooops', resp.message , 'error')
                         };
                         })
               } else if (!resp.data.ok) {

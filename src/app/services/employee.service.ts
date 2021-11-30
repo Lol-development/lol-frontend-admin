@@ -38,6 +38,10 @@ export class EmployeeService {
      const url = `${this.base_url}/asigncertificates/create`;
      return this.http.post(url, data, this.header);
   }
+  deleteAsignCertificate(id:string){
+    const url = `${this.base_url}/asigncertificates/delete/${id}`;
+    return this.http.delete(url, this.header);
+  }
   getAsignCertificateEmployee(id:string){
     const url = `${this.base_url}/asigncertificates/getforemploye/${id}`;
     return this.http.get(url, this.header);
@@ -50,6 +54,10 @@ export class EmployeeService {
     const url = `${this.base_url}/medicalexams/create`;
     return this.http.post(url, data, this.header);
   }
+  deleteMedicalTests(id:string){
+    const url = `${this.base_url}/medicalexams/delete/${id}`;
+    return this.http.delete(url, this.header);
+  }
 
   getCNCLEmploye(id:string){
     const url = `${this.base_url}/cncl/getforemploye/${id}`;
@@ -58,5 +66,15 @@ export class EmployeeService {
   asignCNCL(data:{}){
     const url = `${this.base_url}/cncl/create`;
     return this.http.post(url, data , this.header);
+  }
+
+  deleteCNCLAsign(id:string){
+    const url = `${this.base_url}/cncl/delete/${id}`;
+    return this.http.delete(url , this.header)
+  }
+
+  deleteInductionEmployee(id:string){
+    const url = `${this.base_url}/hsqinductions/delete/${id}`;
+    return this.http.delete(url , this.header);
   }
 }

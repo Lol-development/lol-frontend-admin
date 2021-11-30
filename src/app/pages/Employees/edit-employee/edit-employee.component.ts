@@ -195,6 +195,33 @@ export class EditEmployeeComponent implements OnInit {
             }
           })
   }
+  deleteInduction(id:string){
+    Swal.fire({
+      title: '¿Quieres eliminar esta inducción? ',
+      showDenyButton: true,
+     
+      confirmButtonText: 'Eliminar',
+       denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.employeSvc.deleteInductionEmployee(id)
+        .subscribe((resp:any) => {
+          console.log(resp);
+          if (resp.error === false) {
+            Swal.fire('Exito', resp.message, 'success');
+            this.getHSQInductions();
+          }else {
+            Swal.fire('Oooops', resp.message, 'error')
+          }
+        })
+      } else if (result.isDenied) {
+        Swal.fire('Eliminación cancelada', '', 'info')
+      }
+     
+    })
+ 
+  }
   getPorts(){
     this.globalSvc.getPorts()
           .subscribe((resp:any) => {
@@ -226,6 +253,34 @@ export class EditEmployeeComponent implements OnInit {
               }
             })
   }
+
+  deleteCertificate(id:string){
+    Swal.fire({
+      title: '¿Quieres eliminar este certificado? ',
+      showDenyButton: true,
+     
+      confirmButtonText: 'Eliminar',
+       denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.employeSvc.deleteAsignCertificate(id)
+        .subscribe((resp:any) => {
+          console.log(resp);
+          if (resp.error === false) {
+            Swal.fire('Exito', resp.message, 'success');
+            this.getCertifatesEmployee();
+          } else {
+            Swal.fire('Oooops', resp.message, 'error');
+          }
+        })
+      } else if (result.isDenied) {
+        Swal.fire('Eliminación cancelada', '', 'info')
+      }
+     
+    })
+    
+  }
   getAvaibleCertificates(){
     this.globalSvc.getAllCertificates()
           .subscribe((resp:any) => {
@@ -256,7 +311,33 @@ export class EditEmployeeComponent implements OnInit {
                 }
               })
   }
+  deleteMedicalTest(id:string){
+    
+    Swal.fire({
+      title: '¿Quieres eliminar este examen médico? ',
+      showDenyButton: true,
+     
+      confirmButtonText: 'Eliminar',
+       denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.employeSvc.deleteMedicalTests(id)
+        .subscribe((resp:any) => {
+          if (resp.error === false) {
+            Swal.fire('Exito', resp.message, 'success');
+            this.getMedicTestEmployee();
+          } else {
+            Swal.fire('Oooops', resp.message , 'error');
+          }
+        })
+      } else if (result.isDenied) {
+        Swal.fire('Eliminación cancelada', '', 'info')
+      }
+     
+    })
 
+  }
   asignCNCL(){
     const body = {
       employee_id: this.ID,
@@ -275,7 +356,33 @@ export class EditEmployeeComponent implements OnInit {
             }
           })
   }
+  deleteCNCLAsign(id:string){
 
+    Swal.fire({
+      title: '¿Quieres eliminar esta certificación? ',
+      showDenyButton: true,
+     
+      confirmButtonText: 'Eliminar',
+       denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.employeSvc.deleteCNCLAsign(id)
+        .subscribe((resp:any) => {
+          if (resp.error === false) {
+              Swal.fire('Exito', resp.message, 'success');
+              this.getCNCLEmployee();
+          }else{ 
+              Swal.fire('Oooops', resp.message, 'error');
+          }
+        })
+      } else if (result.isDenied) {
+        Swal.fire('Eliminación cancelada', '', 'info')
+      }
+     
+    })
+  
+  }
   getCNCLEmployee(){
       this.employeSvc.getCNCLEmploye(this.ID)
               .subscribe((resp:any) => {
