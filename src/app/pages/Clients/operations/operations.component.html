@@ -37,7 +37,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr [routerLink]="['/Home/ClientOperations', '5']" style="cursor: pointer;" *ngFor="let cli of clients">
+                            <tr [routerLink]="['/Home/ClientOperations', cli.id]" style="cursor: pointer;" *ngFor="let cli of clients">
                                 <td>
                                     <span>{{cli.client_name}} </span>
 
@@ -58,7 +58,7 @@
                                     <span>{{cli.social_linkedin}} </span>
                                 </td>
                                 <td class="table-action">
-                                    <a [routerLink]="['/Home/ClientOperations', '5']" class="action-icon"> <i class="uil uil-expand-arrows"></i></a>
+                                    <a [routerLink]="['/Home/ClientOperations', cli.id]" class="action-icon"> <i class="uil uil-expand-arrows"></i></a>
 
                                 </td>
                             </tr>

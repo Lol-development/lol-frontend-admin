@@ -49,13 +49,18 @@
                             <span class="d-none d-md-block">Evidencias</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#reportes" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                            <span class="d-none d-md-block">Reportes</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="tab-content">
-
-                            <div class="tab-pane show active" id="turns">
+                            <div class="tab-pane fade  show active" id="turns">
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="vertical-left-tabs-preview">
                                         <div class="row">
@@ -85,13 +90,13 @@
                                             <div class="col-sm-9">
                                                 <div class="tab-content" id="v-pills-tabContent">
                                                     <div class="tab-pane   fade" id="turn-bill" role="tabpanel" aria-labelledby="turn-bill-tab">
-                                                        <div class="d-flex w-auto">
+                                                        <!--   <div class="d-flex w-auto">
                                                             <label class="form-label">Mes a facturar</label>
                                                             <input type="month" class="form-control date" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" style="height:38px">
                                                             <a href="#" class="mx-2">
                                                                 <button class="btn btn-primary">Descargar</button>
                                                             </a>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="table-responsive-sm">
                                                             <table class="table table-striped table-centered mb-0">
                                                                 <thead>
@@ -100,52 +105,27 @@
                                                                         <th>Cant.</th>
                                                                         <th>Vr. Por turno ($)</th>
                                                                         <th>Subtotal</th>
-                                                                        <th>
-                                                                            <div class="form-check">
-                                                                                <label class="form-check-label" for="flexCheckChecked">
-                                                                                    Verificado
-                                                                                </label>
-                                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                                                            </div>
-                                                                        </th>
+
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <td>Turnos Pto Pimsa-Estibador - 8hrs Diruno - Nocturno</td>
-                                                                        <td>0</td>
-                                                                        <td>$ 126.000</td>
-                                                                        <td>0</td>
-                                                                        <td></td>
-
+                                                                    <tr *ngFor="let facturation_report of facturation_reports">
+                                                                        <td>{{facturation_report.turn.description}}{{facturation_report.turn.abbreviation}}</td>
+                                                                        <td>{{facturation_report.cnt }}</td>
+                                                                        <td>{{facturation_report.turn.value}} </td>
+                                                                        <td>{{getSubtotal(facturation_report.cnt, facturation_report.turn.value)}} </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>Turnos Pto Pimsa-Estibador - 10hrs Diruno - Nocturno</td>
-                                                                        <td>32.5</td>
-                                                                        <td>$ 137.000</td>
-                                                                        <td>$ 4.452.500 </td>
-                                                                        <td></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Turnos Pto Pimsa- Operario de Montacargas - Siso- Supervisor- <br>Tarjador- Digitalizador- 10 Hrs Diurno - Nocturno</td>
-                                                                        <td>10,5</td>
-                                                                        <td>$ 171.000</td>
-                                                                        <td>$ 1.795.500</td>
-                                                                        <td></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Reembolso de Servicio de Comedor </td>
-                                                                        <td>39</td>
-                                                                        <td>$ 14.500</td>
-                                                                        <td>$ 565.500</td>
-                                                                        <td></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><b>TOTALES JULIO DE 2021</b></td>
-                                                                        <td>43</td>
-                                                                        <td></td>
-                                                                        <td>$ 6.813.500</td>
-                                                                        <td></td>
+                                                                        <td>
+                                                                            <h4>TOTAL</h4>
+                                                                        </td>
+                                                                        <td>
+                                                                            {{total_turns}}
+                                                                        </td>
+                                                                        <td>{{subtotal_turn}} </td>
+                                                                        <td>
+                                                                            <h4 class="text-primary">{{total}} </h4>
+                                                                        </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -161,58 +141,41 @@
                                                     <div class="tab-pane   fade" id="daily-table" role="tabpanel" aria-labelledby="daily-table-tab">
                                                         <div class=" d-flex w-auto ">
                                                             <label class="form-label">Dia a facturar</label>
-                                                            <input type="date" class="form-control date " id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" style="height: 38px;">
-                                                            <a href="#" class="mx-2">
-                                                                <button class="btn btn-primary">Descargar</button>
-                                                            </a>
+                                                            <input type="date" class="form-control date " [(ngModel)]="filter_day" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" style="height: 38px;">
+                                                            <span class="mx-2">
+                                                                <button type="button" (click)="getDailyReport()" class="btn btn-primary">Filtrar</button>
+                                                            </span>
                                                         </div>
                                                         <div class="table-responsive-sm">
                                                             <table class="table table-striped table-centered mb-0">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>Nombre</th>
-                                                                        <th>Puerto</th>
                                                                         <th>Turno</th>
                                                                         <th>Horas laboradas</th>
                                                                         <th>Actividad Ejecutada</th>
-                                                                        <th>Transporte</th>
-                                                                        <th>Alimentación</th>
-
-                                                                        <th>SS</th>
+                                                                        <th>Comentarios</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr style="cursor: pointer;" tabindex="0">
-                                                                        <td class="table-user"><span>Hugo Guette</span></td>
-                                                                        <td><span>Pimsa</span></td>
-                                                                        <td><span>Diurno</span></td>
-                                                                        <td><span>10 horas</span></td>
-                                                                        <td><span>Salubrista</span></td>
-                                                                        <td><span>Tpt</span></td>
-                                                                        <td>
-                                                                            <span>Alm </span>
-                                                                            <span>Mer</span>
-                                                                        </td>
-                                                                        <td>Ss</td>
+                                                                    <tr *ngFor="let daily_report of daily_reports" style="cursor: pointer;" tabindex="0">
+                                                                        <td class="table-user"><span>{{daily_report.employee.fullname}} </span></td>
+                                                                        <td><span>{{daily_report.turn.description}}</span></td>
+                                                                        <td><span>{{daily_report.date_start}} {{daily_report.date_stop}} </span></td>
+                                                                        <td><span>{{daily_report.position.name}}</span></td>
+                                                                        <td><span>{{daily_report.turn.comments}}</span></td>
+
 
                                                                     </tr>
-                                                                    <tr style="cursor: pointer;" tabindex="0">
-                                                                        <td class="table-user"><span>Sergio Florez (Tarjador )</span></td>
-                                                                        <td><span>Pimsa</span></td>
-                                                                        <td><span>Diurno</span></td>
-                                                                        <td><span>10 horas</span></td>
-                                                                        <td><span>Tarjador</span></td>
-                                                                        <td><span>Tpt</span></td>
-                                                                        <td>
-                                                                            <span>Alm </span>
-                                                                            <span>Mer</span>
-                                                                        </td>
-                                                                        <td>Ss</td>
 
-                                                                    </tr>
 
                                                                 </tbody>
                                                             </table>
+                                                            <div class="alert alert-success" role="alert" *ngIf="daily_reports.length === 0">
+                                                                <h4 class="alert-heading">No hay resultados que concuerden con esa fecha</h4>
+                                                                <p></p>
+                                                                <p class="mb-0">Busca otra fecha</p>
+                                                            </div>
                                                             <div id="complex-header-datatable_paginate" class="dataTables_paginate paging_simple_numbers mt-1 text-end">
                                                                 <ul class="pagination pagination-rounded text-end">
                                                                     <li id="complex-header-datatable_previous" class="paginate_button page-item previous disabled"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="0" tabindex="0" class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
@@ -221,8 +184,8 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                    </div>
 
+                                                    </div>
                                                     <div class="tab-pane active show fade" id="consolidate" role="tabpanel" aria-labelledby="consolidate-tab">
                                                         <div class="table-responsive-sm">
                                                             <table class="table table-striped table-centered mb-0">
@@ -231,8 +194,8 @@
                                                                         <th>ID</th>
                                                                         <th>Nombre del empleado</th>
                                                                         <th>Cargo del empleado</th>
-                                                                        <th>Numero de turnos - mes</th>
-                                                                        <th>Valor a pagar - mes</th>
+                                                                        <th>Horario turno</th>
+                                                                        <th>Turno</th>
                                                                         <th>
                                                                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-staf-modal">
                                                                                 <i class="mdi-plus mdi"></i> Personal
@@ -241,36 +204,27 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr style="cursor: pointer;" tabindex="0">
-                                                                        <td class="table-user"><span>73,085,373</span></td>
-                                                                        <td><span>Andres Figueroa Estrada </span></td>
-                                                                        <td><span>Tarjador </span></td>
-                                                                        <td><span>25</span></td>
-                                                                        <td><span>$670.000</span></td>
+                                                                    <tr style="cursor: pointer;" tabindex="0" *ngFor="let rcc of rccs">
+                                                                        <td class="table-user"><span>{{rcc.employee.document_number}} </span></td>
+                                                                        <td><span>{{rcc.employee.fullname}} </span></td>
+                                                                        <td><span>{{rcc.position.name}} </span></td>
+                                                                        <td><span>{{rcc.position.horary}} </span></td>
+                                                                        <td><span>{{rcc.turn.abbreviation}} </span></td>
 
-                                                                        <td class="table-action"><a class="action-icon" [routerLink]="['/Home/ClientOperations',this.ID,'OperationsDetail', this.Oid, 'EmployeeMonthJob', 1]" routerLinkActive="router-link-active"><i class="uil uil-expand-arrows"></i></a></td>
+                                                                        <td class="table-action">
+                                                                            <a class="action-icon" [routerLink]="['/Home/ClientOperations',this.ID,'OperationsDetail', this.Oid, 'EmployeeMonthJob', rcc.employee_id]" routerLinkActive="router-link-active"><i class="uil uil-expand-arrows"></i></a>
+                                                                        </td>
                                                                     </tr>
-                                                                    <tr style="cursor: pointer;" tabindex="0">
-                                                                        <td class="table-user"><span>72,043,917</span></td>
-                                                                        <td><span>Apolinar Javier Barrios Jiménez</span></td>
-                                                                        <td><span>Estibador</span></td>
-                                                                        <td><span>30</span></td>
-                                                                        <td><span>$870.000</span></td>
 
-                                                                        <td class="table-action"><a class="action-icon" [routerLink]="['/Home/ClientOperations',this.ID,'OperationsDetail', this.Oid, 'EmployeeMonthJob', 1]" routerLinkActive="router-link-active"><i class="uil uil-expand-arrows"></i></a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td><b>Total a pagar en mes</b></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td>$1.630.000</td>
-                                                                        <td></td>
-
-                                                                    </tr>
                                                                 </tbody>
                                                             </table>
 
+                                                        </div>
+
+                                                        <div class="alert alert-success" role="alert" *ngIf="rccs.length === 0">
+                                                            <h4 class="alert-heading">No hay empleados asignados a esta operación</h4>
+                                                            <p></p>
+                                                            <p class="mb-0">Agrega uno nuevo</p>
                                                         </div>
                                                     </div>
 
@@ -283,13 +237,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane" id="Desprendibles">
+                            <div class="tab-pane fade" id="Desprendibles">
                                 <div class="d-flex justify-content-between mb-2">
 
                                     <button class="btn btn-primary" style="height: 38px;">Descargar</button>
                                     <button class="btn btn-primary" data-bs-target="#add-removable-modal" data-bs-toggle="modal">Agregar reporte</button>
 
 
+                                </div>
+                                <div class="alert alert-success" role="alert" *ngIf="removables.length === 0">
+                                    <h4 class="alert-heading">No hay desprendibles adjuntados a esta operación</h4>
+                                    <p></p>
+                                    <p class="mb-0">Crea uno nuevo</p>
                                 </div>
                                 <div class="app-search ">
                                     <div class="mb-2 position-relative">
@@ -298,7 +257,7 @@
                                     </div>
                                 </div>
 
-                                <div class="table-responsive ">
+                                <div class="table-responsive " *ngIf="removables.length > 0">
                                     <table class="table table-striped table-centered mb-0">
                                         <thead>
                                             <tr>
@@ -311,62 +270,30 @@
                                                 <th>Cargo</th>
                                                 <th>Salario Básico</th>
                                                 <th>Aux. de Tpt</th>
+                                                <th>Du ración</th>
                                                 <th>Inicio de contrato</th>
                                                 <th>Fín contrato</th>
-                                                <th>Duración</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                            <tr *ngFor="let removable of removables">
                                                 <td class="table-user">
                                                     <img src="assets/images/users/avatar-2.jpg" alt="table-user" class="me-2 rounded-circle">
                                                 </td>
-                                                <td> 73,085,373 </td>
-                                                <td> Andres Figueroa Estrada </td>
-                                                <td> LIMPIEZA DE PASOS- AYUDANTE DE MONTACARGAS-BATIMETRIA - MALAMBO (ATLANTICO) </td>
-                                                <td> PAGO DEL 19 AL 27 MAYO DE 2021</td>
-                                                <td> Estibador</td>
-                                                <td> $ 908,526.00 </td>
-
-                                                <td> $ 106,454.00 </td>
-                                                <td> 08/06/2021 </td>
-                                                <td> 10/06/2021 </td>
-                                                <td>2 Días</td>
-
-                                            </tr>
-                                            <tr>
-                                                <td class="table-user">
-                                                    <img src="assets/images/users/avatar-3.jpg" alt="table-user" class="me-2 rounded-circle">
-                                                </td>
-                                                <td> 72,043,917 </td>
-                                                <td>Apolinar Javier Barrios Jiménez </td>
-                                                <td>LIMPIEZA DE PASOS- AYUDANTE DE MONTACARGAS-BATIMETRIA - MALAMBO (ATLANTICO) </td>
-                                                <td>DESPRENDIBLE DE PAGO - DEL 19 AL 27 MAYO DE 2034 </td>
-                                                <td>Estibador </td>
-                                                <td>$ 908,526.00 </td>
-                                                <td>$ 106,454.00 </td>
-                                                <td>04/06/2021 </td>
-                                                <td>08/06/2021 </td>
-                                                <td>4 Días </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table-user">
-                                                    <img src="assets/images/users/avatar-4.jpg" alt="table-user" class="me-2 rounded-circle">
-                                                </td>
-                                                <td>12,596,856 </td>
-                                                <td>Ariel Darío Zuleta Padilla</td>
-                                                <td>LIMPIEZA DE PASOS- AYUDANTE DE MONTACARGAS-BATIMETRIA - MALAMBO (ATLANTICO)</td>
-                                                <td>DESPRENDIBLE DE PAGO - DEL 19 AL 27 MAYO DE 2022 </td>
-                                                <td>Estibador </td>
-                                                <td> $ 908,526.00 </td>
-                                                <td> $ 106,454.00 </td>
-                                                <td>04/06/2021 </td>
-                                                <td>08/06/2021 </td>
-                                                <td>4 Días </td>
-
+                                                <td> {{removable.employee.document_number}} </td>
+                                                <td> {{removable.employee.fullname}} </td>
+                                                <td> {{removable.activity}} </td>
+                                                <td> {{removable.date_start}} - {{removable.date_stop}} </td>
+                                                <td> {{removable.position.name}}</td>
+                                                <td>{{removable.basic_salary}} </td>
+                                                <td> {{removable.auxiliary_transport}} </td>
+                                                <td>{{removable.duration}}</td>
+                                                <td> {{removable.date_start | date: 'short'}} </td>
+                                                <td> {{removable.date_stop | date: 'short'}} </td>
 
                                             </tr>
+
 
                                         </tbody>
                                     </table>
@@ -379,15 +306,19 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="tab-pane   fade" id="operations-state">
+                            <div class="tab-pane fade" id="operations-state">
                                 <div class=" d-flex w-auto justify-content-end ">
                                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-operation-status-modal">Generar reporte</button>
                                 </div>
-                                <div class="table-responsive-sm">
+                                <div class="alert alert-success my-2" role="alert" *ngIf="factualStatus.length === 0">
+                                    <h4 class="alert-heading">No hay actualizaciones en la operación</h4>
+                                    <p></p>
+                                    <p class="mb-0">Genera un nuevo reporte</p>
+                                </div>
+                                <div class="table-responsive" *ngIf="factualStatus.length > 0">
                                     <table class="table table-striped table-centered mb-0">
                                         <thead>
                                             <tr>
-                                                <th>N°</th>
                                                 <th>Motonave/Barcaza</th>
                                                 <th>Fecha</th>
                                                 <th>Hora inicio </th>
@@ -395,17 +326,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr style="cursor: pointer;" tabindex="0">
-                                                <td class="table-user"><span>1</span></td>
-                                                <td><span>MAG7</span></td>
-                                                <td><span>10/05/2021</span></td>
-                                                <td><span>10:35 AM</span></td>
-                                                <td><span>Freno en descargue por malas condiciones climaticas</span></td>
-
-
+                                            <tr *ngFor="let factualStatu of factualStatus" style="cursor: pointer;" tabindex="0">
+                                                <td><span>{{factualStatu.motor_ship}}</span></td>
+                                                <td><span>{{factualStatu.createdAt | date:'shortDate'}}</span></td>
+                                                <td><span>{{factualStatu.createdAt | date:'shortTime'}}</span></td>
+                                                <td><span>{{factualStatu.description}}</span></td>
                                             </tr>
-
-
                                         </tbody>
                                     </table>
                                     <div id="complex-header-datatable_paginate" class="dataTables_paginate paging_simple_numbers mt-1 text-end">
@@ -417,18 +343,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane" id="chargue">
+                            <div class="tab-pane fade" id="chargue">
                                 <div class="container-btn d-flex justify-content-between mb-2">
                                     <button class="btn btn-primary" style="height: 38px;">Descargar</button>
                                     <button class="btn btn-primary mx-2" style="height: 38px;" data-bs-target="#add-charge-modal" data-bs-toggle="modal">Agregar reporte</button>
                                 </div>
                                 <div class="app-search ">
+                                    <div class="alert alert-success" role="alert" *ngIf="carries.length === 0">
+                                        <h4 class="alert-heading">No hay cargues disponibles</h4>
+                                        <p></p>
+                                        <p class="mb-0">Genera uno nuevo</p>
+                                    </div>
                                     <div class="mb-2 position-relative">
                                         <input type="text" placeholder="Buscar cargas...." class="form-control">
                                         <span class="mdi mdi-magnify search-icon"></span>
                                     </div>
                                 </div>
-                                <div class="table-responsive">
+                                <div class="table-responsive" *ngIf="carries.length > 0">
                                     <table class="table table-striped table-centered mb-0">
                                         <thead>
                                             <tr>
@@ -448,38 +379,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-
-                                                <td>KING 300</td>
-                                                <td>24/06/2021 07:12</td>
-                                                <td>24/08/2021 12:12</td>
-                                                <td>1</td>
-                                                <td>Cliente 4</td>
-                                                <td>FWE345</td>
-                                                <td>15000</td>
-                                                <td>HDF49342D</td>
-                                                <td>5mts</td>
-                                                <td>5 x 2.5 mts/u</td>
-                                                <td>300kg</td>
-                                                <td>Perfectas condiciones</td>
+                                            <tr *ngFor="let carrie of carries">
+                                                <td>{{carrie.motor_ship}}</td>
+                                                <td>{{carrie.date_start}}</td>
+                                                <td>{{carrie.date_stop}}</td>
+                                                <td>{{carrie.coils}} </td>
+                                                <td>{{carrie.client.client_name}} </td>
+                                                <td>{{carrie.license_plate}}</td>
+                                                <td>{{carrie.consignment}}</td>
+                                                <td>{{carrie.coil_code}}</td>
+                                                <td>{{carrie.thickness}}</td>
+                                                <td>{{carrie.dimensions}}</td>
+                                                <td>{{carrie.gross_weight}}</td>
+                                                <td>{{carrie.observations}} </td>
                                             </tr>
-                                            <tr>
 
-
-                                                <td>MLB 234</td>
-                                                <td>24/07/2021 07:12</td>
-                                                <td>24/07/2021 12:12</td>
-                                                <td>1</td>
-                                                <td>Cliente 4</td>
-                                                <td>WHR100</td>
-                                                <td>15000</td>
-                                                <td>DHFHS49AS</td>
-                                                <td>6mts</td>
-                                                <td>3 x 4.5 mts/u</td>
-                                                <td>600kg</td>
-                                                <td>Perfectas condiciones</td>
-
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -494,7 +408,12 @@
                                 </div>
 
                             </div>
-                            <div class="tab-pane" id="descharge">
+                            <div class="tab-pane fade" id="descharge">
+                                <div class="alert alert-success" role="alert" *ngIf="discarries.length === 0">
+                                    <h4 class="alert-heading">No hay descargues disponibles </h4>
+                                    <p></p>
+                                    <p class="mb-0">Genera uno nuevo</p>
+                                </div>
                                 <div class="container-btn d-flex justify-content-between mb-2">
                                     <button class="btn btn-primary" style="height: 38px;">Descargar</button>
                                     <button class="btn btn-primary mx-2" style="height: 38px;" data-bs-target="#add-descharge-modal" data-bs-toggle="modal">Agregar reporte</button>
@@ -505,7 +424,7 @@
                                         <span class="mdi mdi-magnify search-icon"></span>
                                     </div>
                                 </div>
-                                <div class="table-responsive">
+                                <div class="table-responsive" *ngIf="discarries.length > 0">
                                     <table class="table table-striped table-centered mb-0">
                                         <thead>
                                             <tr>
@@ -515,33 +434,21 @@
                                                 <th>Fecha y hora fin</th>
                                                 <th>N° Bobinas</th>
                                                 <th>Cliente</th>
-
                                                 <th>Observaciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                            <tr *ngFor="let discarrie of discarries">
 
-                                                <td>KING 300</td>
-                                                <td>24/06/2021 07:12</td>
-                                                <td>24/08/2021 12:12</td>
-                                                <td>1</td>
-                                                <td>Cliente 4</td>
+                                                <td>{{discarrie.motor_ship}}</td>
+                                                <td>{{discarrie.date_start}}</td>
+                                                <td>{{discarrie.date_stop}} </td>
+                                                <td>0 </td>
+                                                <td>{{discarrie.client.client_name}}</td>
 
-                                                <td>Perfectas condiciones</td>
+                                                <td>{{discarrie.observations}} </td>
                                             </tr>
-                                            <tr>
 
-
-                                                <td>MLB 234</td>
-                                                <td>24/07/2021 07:12</td>
-                                                <td>24/07/2021 12:12</td>
-                                                <td>1</td>
-                                                <td>Cliente 4</td>
-
-                                                <td>Perfectas condiciones</td>
-
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -556,10 +463,15 @@
                                 </div>
 
                             </div>
-                            <div class="tab-pane" id="office">
+                            <div class="tab-pane fade" id="office">
                                 <div class="btn-container d-flex justify-content-between mb-2">
                                     <button class="btn btn-primary" style="height: 38px;">Descargar</button>
                                     <button class="btn btn-primary mx-2" style="height: 38px;" data-bs-target="#add-office-modal" data-bs-toggle="modal">Nuevo despacho</button>
+                                </div>
+                                <div class="alert alert-success" role="alert" *ngIf="dispatches.length === 0">
+                                    <h4 class="alert-heading">No hay despachos existentes</h4>
+                                    <p></p>
+                                    <p class="mb-0">Genera uno nuevo</p>
                                 </div>
                                 <div class="app-search ">
                                     <div class="mb-2 position-relative">
@@ -567,7 +479,7 @@
                                         <span class="mdi mdi-magnify search-icon"></span>
                                     </div>
                                 </div>
-                                <div class="table-responsive">
+                                <div class="table-responsive" *ngIf="dispatches.length > 0">
                                     <table class="table table-striped table-centered mb-0">
                                         <thead>
                                             <tr>
@@ -586,37 +498,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-
-                                                <td>KING 300</td>
-                                                <td>24/06/2021 07:12</td>
-                                                <td>24/08/2021 12:12</td>
-                                                <td>5</td>
-                                                <td>Remesa</td>
-                                                <td>FWE345</td>
-                                                <td>15000</td>
-                                                <td>HDF49342D</td>
-                                                <td>5mts</td>
-                                                <td>5 x 2.5 mts/u</td>
-                                                <td>300kg</td>
-                                                <td>Perfectas condiciones</td>
+                                            <tr *ngFor="let dispatch of dispatches">
+                                                <td>{{dispatch.motor_ship}}</td>
+                                                <td>{{dispatch.date_start }} </td>
+                                                <td>{{dispatch.date_stop}}</td>
+                                                <td>{{dispatch.coils}} </td>
+                                                <td>{{dispatch.client.client_name}}</td>
+                                                <td>{{dispatch.license_plate}}</td>
+                                                <td>{{dispatch.consignment}}</td>
+                                                <td>{{dispatch.coil_code}}</td>
+                                                <td>{{dispatch.thickness}}</td>
+                                                <td>{{dispatch.dimensions}}</td>
+                                                <td>{{dispatch.gross_weight}}</td>
+                                                <td>{{dispatch.observations}} </td>
                                             </tr>
-                                            <tr>
 
-                                                <td>MLB 234</td>
-                                                <td>24/07/2021 07:12</td>
-                                                <td>24/07/2021 12:12</td>
-                                                <td>7</td>
-                                                <td>Remesa</td>
-                                                <td>WHR100</td>
-                                                <td>15000</td>
-                                                <td>DHFHS49AS</td>
-                                                <td>6mts</td>
-                                                <td>3 x 4.5 mts/u</td>
-                                                <td>600kg</td>
-                                                <td>Perfectas condiciones</td>
-
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -629,51 +525,143 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="tab-pane" id="evidencias">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-3">Adjunta material gráfico de la operacion</h5>
-                                        <p class="card-text mb-3">Dimensiones recomendadas 800x400 (px)</p>
-                                        <form action="/" method="post" class="dropzone dz-clickable" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
+                            <div class="tab-pane fade" id="evidencias">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="card">
 
+                                            <div class="card-body">
+                                                <h5 class="card-title  mb-3">Adjunta material gráfico de la operacion</h5>
+                                                <p class="card-text mb-3">Dimensiones recomendadas 800x400 (px)</p>
+                                                <div class="mb-3">
+                                                    <label for="simpleinput" class="form-label">Descripción</label>
+                                                    <input type="text" id="simpleinput" [(ngModel)]="evidences_desc" class="form-control">
+                                                </div>
+                                                <div class="row align-items-center mb-3">
 
-                                            <div class="dz-message needsclick">
-                                                <i class="h3 text-muted dripicons-cloud-upload"></i>
-                                                <h4>Drop files here or click to upload.</h4>
+                                                    <div class="col">
+                                                        <input type="file" accept="image=@/" #imageBox name="image" id="avatarinput" (change)="convert($event)" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 mb-sm-2 mt-2">
+                                                    <button class="btn btn-primary" type="button" (click)="uploadEvidence()">Subir</button>
+                                                </div>
                                             </div>
-                                        </form>
-                                        <div class="card mb-0 my-1 shadow-none border">
-                                            <div class="p-2">
-                                                <div class="row align-items-center">
-                                                    <div class="col-auto">
-                                                        <div class="avatar-sm">
-                                                            <span class="avatar-title bg-secondary text-light rounded">
-                                                                                            .MP4
-                                                                                        </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col ps-0">
-                                                        <a href="javascript:void(0);" class="text-muted fw-bold">Admin-bug-report.mp4</a>
-                                                        <p class="mb-0">7.05 MB</p>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <!-- Button -->
-                                                        <a href="javascript:void(0);" class="btn btn-link btn-lg text-muted">
-                                                            <i class="dripicons-download"></i>
-                                                        </a>
-                                                    </div>
+                                        </div>
 
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+
+                                                <div class="card mb-0 my-1 shadow-none border" *ngFor="let evidence of evidences">
+                                                    <div class="p-2">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-auto">
+                                                                <div class="avatar-sm">
+                                                                    <span class="avatar-title bg-secondary text-light rounded">
+                                                                                                    IMG
+                                                                                                </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col ps-0">
+                                                                <a href="javascript:void(0);" class="text-muted fw-bold">{{evidence.description}} </a>
+                                                                <p class="mb-0">{{evidence.createdAt | date:'short'}} </p>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <!-- Button -->
+                                                                <a [href]="evidence.url" class="btn btn-link btn-lg text-muted">
+                                                                    <i class="dripicons-download"></i>
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
                                                 </div>
 
                                             </div>
                                         </div>
-                                        <div class="col-sm-12 mb-sm-2 mt-2">
-                                            <button class="btn btn-primary">Subir</button>
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
+                            <div class="tab-pane fade" id="reportes">
+                                <div class="row" bis_skin_checked="1">
+                                    <div class="col-sm-3 mb-2 mb-sm-0" bis_skin_checked="1">
+                                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" bis_skin_checked="1">
+                                            <a class="nav-link active show" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                                                <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                                                <span class="d-none d-md-block">Crear Reporte</span>
+                                            </a>
+                                            <a class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                                                <i class="mdi mdi-account-circle d-md-none d-block"></i>
+                                                <span class="d-none d-md-block">Actualizar Reporte</span>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                    <!-- end col-->
+
+                                    <div class="col-sm-9" bis_skin_checked="1">
+                                        <div class="tab-content" id="v-pills-tabContent" bis_skin_checked="1">
+                                            <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" bis_skin_checked="1">
+
+                                                <div class="mb-3" bis_skin_checked="1">
+                                                    <label for="simpleinput" class="form-label">Rata Esperada</label>
+                                                    <input type="number" placeholder="Rata Esperada" [(ngModel)]="expected_rat" id="simpleinput" class="form-control">
+                                                </div>
+                                                <div class="mb-3" bis_skin_checked="1">
+                                                    <label for="simpleinput" class="form-label">Rata Real</label>
+                                                    <input type="number" placeholder="Rata Real" [(ngModel)]="obtained_rat" id="simpleinput" class="form-control">
+                                                </div>
+                                                <div class="mb-3" bis_skin_checked="1">
+                                                    <label for="simpleinput" class="form-label">Horas Esperadas</label>
+                                                    <input type="number" placeholder="Horas Esperadas" [(ngModel)]="expected_time" id="simpleinput" class="form-control">
+
+                                                </div>
+                                                <div class="mb-3" bis_skin_checked="1">
+                                                    <label for="simpleinput" class="form-label">Horas Real</label>
+                                                    <input type="number" placeholder="Horas Reales" [(ngModel)]="real_time" id="simpleinput" class="form-control">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <button class="btn btn-primary" *ngIf="reports.length === 0" type="button" (click)="createReport()">
+                                                        Generar Reporte
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" bis_skin_checked="1">
+                                                <div class="mb-3" bis_skin_checked="1">
+                                                    <label for="simpleinput" class="form-label">Rata Esperada</label>
+                                                    <input type="number" placeholder="Rata Esperada" [(ngModel)]="expected_rat" id="simpleinput" class="form-control">
+                                                </div>
+                                                <div class="mb-3" bis_skin_checked="1">
+                                                    <label for="simpleinput" class="form-label">Rata Real</label>
+                                                    <input type="number" placeholder="Rata Real" [(ngModel)]="obtained_rat" id="simpleinput" class="form-control">
+                                                </div>
+                                                <div class="mb-3" bis_skin_checked="1">
+                                                    <label for="simpleinput" class="form-label">Horas Esperadas</label>
+                                                    <input type="number" placeholder="Horas Esperadas" [(ngModel)]="expected_time" id="simpleinput" class="form-control">
+
+                                                </div>
+                                                <div class="mb-3" bis_skin_checked="1">
+                                                    <label for="simpleinput" class="form-label">Horas Real</label>
+                                                    <input type="number" placeholder="Horas Reales" [(ngModel)]="real_time" id="simpleinput" class="form-control">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <button class="btn btn-primary" type="button" (click)="updateReport()">
+                                                        Actualizar Reporte
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- end tab-content-->
+                                    </div>
+                                    <!-- end col-->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -703,32 +691,36 @@
                 <div class="date-container d-flex justify-content-between">
                     <div class="mb-3">
                         <label class="form-label">Fechas Inicial</label>
-                        <input type="date" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
+                        <input type="date" [(ngModel)]="date_start" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Fechas Final</label>
-                        <input type="date" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
+                        <input type="date" [(ngModel)]="date_stop" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
                     </div>
                 </div>
 
 
-                <select class="form-select mb-3">
+                <select class="form-select mb-3" [(ngModel)]="eid">
                     <option selected="">Seleccionar personal</option>
-                    <option value="1">Jose Amaya</option>
-                    <option value="2">Juan Lopez</option>
-                    <option value="3">Carlos Perez</option>
+                    <option *ngFor="let employee of employees" [value]="employee.id"  >{{employee.fullname}} </option>
+
                 </select>
 
-                <select class="form-select mb-3">
+                <select class="form-select mb-3" [(ngModel)]="turn_id">
                     <option selected="">Seleccionar turno</option>
-                    <option value="1">8hrs Diurno</option>
-                    <option value="2">8hrs Nocturno</option>
-                    <option value="3">10hrs Diurno, Sabados y Domingos</option>
+                    <option *ngFor="let turn of turns" [value]="turn.id">{{turn.description}} </option>
                 </select>
+                <div class="mb-3">
+                    <select class="form-select mb-3" [(ngModel)]="charge_id">
+                        <option selected="">Seleccionar cargo</option>
+                        <option [value]="charge.id"  *ngFor="let charge of charges">{{charge.name}}</option>
+                      
+                    </select>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-primary" (click)="newEmployeeOperation()">Guardar</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -747,46 +739,47 @@
             </div>
             <div class="modal-body">
                 <div class="form-container">
+
                     <div class="mb-3">
-                        <label class="form-label">ID</label>
-                        <input type="text" class="form-control" placeholder="ID del trabajador">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Nombre completo</label>
-                        <input type="text" class="form-control" placeholder="Nombre completo del trabajador">
+                        <label class="form-label">Empleado</label>
+                        <select class="form-select mb-3" [(ngModel)]="employee_id">
+                            <option selected="">Seleccionar empleado</option>
+                            <option [value]="employee.id" *ngFor="let employee of employees">{{employee.fullname}}</option>
+                          
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Actividad</label>
-                        <input type="text" class="form-control" placeholder="Actividad del empleado">
+                        <input type="text" class="form-control" [(ngModel)]="activity" placeholder="Actividad del empleado">
                     </div>
                     <div class="mb-3 d-flex justify-content-between">
                         <div class="initial-date">
                             <label class="form-label">Fecha Inicial</label>
-                            <input type="date" class="form-control" placeholder="Periodo inicial de actividades">
+                            <input type="date" class="form-control" [(ngModel)]="date_start" placeholder="Periodo inicial de actividades">
                         </div>
                         <div class="finish-date">
                             <label class="form-label">Fecha Final</label>
-                            <input type="date" class="form-control" placeholder="Periodo final de actividades">
+                            <input type="date" class="form-control" [(ngModel)]="date_stop" placeholder="Periodo final de actividades">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <select class="form-select mb-3">
+                        <select class="form-select mb-3" [(ngModel)]="charge_id">
                             <option selected="">Seleccionar cargo</option>
-                            <option value="1">Estibador</option>
-                            <option value="2">Tarjador</option>
+                            <option [value]="charge.id" *ngFor="let charge of charges">{{charge.name}}</option>
+                          
                         </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Salario Básico</label>
-                        <input type="number" min="0" class="form-control" placeholder="Salario básico del empleado">
+                        <input type="number" [(ngModel)]="basic_salary" min="0" class="form-control" placeholder="Salario básico del empleado">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Aux. de Tpt</label>
-                        <input type="number" min="0" class="form-control" placeholder="Auxilio de transporte">
+                        <input type="number" [(ngModel)]="auxiliary_transport" min="0" class="form-control" placeholder="Auxilio de transporte">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Duración</label>
-                        <input type="text" class="form-control" placeholder="Duración del contrato">
+                        <input type="text" class="form-control" [(ngModel)]="duration" placeholder="Duración del contrato">
                     </div>
 
                 </div>
@@ -796,7 +789,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-primary" (click)="newRemovable()">Guardar</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -815,64 +808,58 @@
             </div>
             <div class="modal-body">
                 <div class="form-container">
-                    <div class="mb-3">
-                        <select class="form-select mb-3">
-                            <option selected="">Tipo de movimiento</option>
-                            <option value="1">Cargue</option>
-                            <option value="2">Descargue</option>
-                        </select>
-                    </div>
+
                     <div class="mb-3">
                         <label class="form-label">Motonave/Barcaza</label>
-                        <input type="text" class="form-control" placeholder="Nombre de la motonave/barcaza">
+                        <input type="text" class="form-control" [(ngModel)]="motor_ship" placeholder="Nombre de la motonave/barcaza">
                     </div>
                     <div class="mb-3 d-flex justify-content-between w-100">
                         <div class="initial-date w-50 mx-1">
                             <label class="form-label">Fecha Inicial</label>
-                            <input type="datetime-local" class="form-control" placeholder="Fecha inicial del movimiento">
+                            <input type="datetime-local" class="form-control" [(ngModel)]="date_start" placeholder="Fecha inicial del movimiento">
                         </div>
                         <div class="finish-date w-50 ">
                             <label class="form-label">Fecha Final</label>
-                            <input type="datetime-local" class="form-control" placeholder="Fecha del movimiento">
+                            <input type="datetime-local" class="form-control" [(ngModel)]="date_stop" placeholder="Fecha del movimiento">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">N° Bobinas</label>
-                        <input type="number" min="0" max="1" class="form-control" placeholder="N° Bobinas">
+                        <input type="number" min="0" max="1" class="form-control" [(ngModel)]="coils" placeholder="N° Bobinas">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Cliente</label>
-                        <input type="text" class="form-control" placeholder="Nombre del cliente">
+                        <input type="text" class="form-control" disabled="" [(ngModel)]="client_name" placeholder="Nombre del cliente">
                     </div>
 
 
                     <div class="mb-3">
                         <label class="form-label">Placa</label>
-                        <input type="number" min="0" class="form-control" placeholder="Placa de la motonave">
+                        <input type="text" class="form-control" [(ngModel)]="license_plate" placeholder="Placa de la motonave">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Remesa</label>
-                        <input type="number" min="0" class="form-control" placeholder="Remesa del movimiento">
+                        <input type="number" min="0" class="form-control" [(ngModel)]="consignment" placeholder="Remesa del movimiento">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Código bobina</label>
-                        <input type="text" class="form-control" placeholder="Código de la bobina">
+                        <input type="text" class="form-control" [(ngModel)]="coil_code" placeholder="Código de la bobina">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Espesor</label>
-                        <input type="text" class="form-control" placeholder="Espesor">
+                        <input type="text" class="form-control" [(ngModel)]="thickness" placeholder="Espesor">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Dimensiones</label>
-                        <input type="text" class="form-control" placeholder="Dimensiones de la bobina">
+                        <input type="text" class="form-control" [(ngModel)]="dimensions" placeholder="Dimensiones de la bobina">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Peso bruto</label>
-                        <input type="text" class="form-control" placeholder="Peso bruto">
+                        <input type="text" class="form-control" [(ngModel)]="gross_weight" placeholder="Peso bruto">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Observaciones</label>
-                        <input type="text" class="form-control" placeholder="Observaciones del movimiento">
+                        <input type="text" class="form-control" [(ngModel)]="observations" placeholder="Observaciones del movimiento">
                     </div>
 
                 </div>
@@ -882,7 +869,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-primary" (click)="newOperationCarrie()">Guardar</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -904,32 +891,32 @@
 
                     <div class="mb-3">
                         <label class="form-label">Motonave/Barcaza</label>
-                        <input type="text" class="form-control" placeholder="Nombre de la motonave/barcaza">
+                        <input type="text" class="form-control" [(ngModel)]="motor_ship" placeholder="Nombre de la motonave/barcaza">
                     </div>
                     <div class="mb-3 d-flex justify-content-between w-100">
                         <div class="initial-date w-50 mx-1">
                             <label class="form-label">Fecha Inicial</label>
-                            <input type="datetime-local" class="form-control" placeholder="Fecha inicial del movimiento">
+                            <input type="datetime-local" class="form-control" [(ngModel)]="date_start" placeholder="Fecha inicial del movimiento">
                         </div>
                         <div class="finish-date w-50 ">
                             <label class="form-label">Fecha Final</label>
-                            <input type="datetime-local" class="form-control" placeholder="Fecha del movimiento">
+                            <input type="datetime-local" class="form-control" [(ngModel)]="date_stop" placeholder="Fecha del movimiento">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">N° Bobinas</label>
-                        <input type="number" min="0" max="1" class="form-control" placeholder="N° Bobinas">
+                        <input type="number" min="0" max="1" [(ngModel)]="coils" class="form-control" placeholder="N° Bobinas">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Cliente</label>
-                        <input type="text" class="form-control" placeholder="Nombre del cliente">
+                        <input type="text" disabled="" class="form-control" [(ngModel)]="client_name" placeholder="Nombre del cliente">
                     </div>
 
 
 
                     <div class="mb-3">
                         <label class="form-label">Observaciones</label>
-                        <input type="text" class="form-control" placeholder="Observaciones del movimiento">
+                        <input type="text" [(ngModel)]="observations" class="form-control" placeholder="Observaciones del movimiento">
                     </div>
 
                 </div>
@@ -939,7 +926,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-primary" (click)="newOperationDischarge()">Guardar</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -961,65 +948,55 @@
 
                     <div class="mb-3">
                         <label class="form-label">Motonave/Barcaza</label>
-                        <input type="text" class="form-control" placeholder="Nombre de la motonave/barcaza">
+                        <input type="text" class="form-control" [(ngModel)]="motor_ship" placeholder="Nombre de la motonave/barcaza">
                     </div>
                     <div class="mb-3 d-flex justify-content-between w-100">
                         <div class="initial-date w-50 mx-1">
                             <label class="form-label">Fecha Inicial</label>
-                            <input type="datetime-local" class="form-control" placeholder="Fecha inicial del movimiento">
+                            <input type="datetime-local" [(ngModel)]="date_start" class="form-control" placeholder="Fecha inicial del movimiento">
                         </div>
                         <div class="finish-date w-50 ">
                             <label class="form-label">Fecha Final</label>
-                            <input type="datetime-local" class="form-control" placeholder="Fecha del movimiento">
+                            <input type="datetime-local" [(ngModel)]="date_stop" class="form-control" placeholder="Fecha del movimiento">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">N° Bobinas</label>
-                        <input type="number" min="0" class="form-control" placeholder="N° Bobinas">
+                        <input type="number" min="0" [(ngModel)]="coils" class="form-control" placeholder="N° Bobinas">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Cliente</label>
-                        <input type="text" class="form-control" placeholder="Nombre del cliente">
-                    </div>
-
-
                     <div class="mb-3">
                         <label class="form-label">Placa</label>
-                        <input type="number" min="0" class="form-control" placeholder="Placa de la motonave">
+                        <input type="number" min="0" [(ngModel)]="license_plate" class="form-control" placeholder="Placa de la motonave">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Remesa</label>
-                        <input type="number" min="0" class="form-control" placeholder="Remesa del despacho">
+                        <input type="number" min="0" [(ngModel)]="consignment" class="form-control" placeholder="Remesa del despacho">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Código bobina</label>
-                        <input type="text" class="form-control" placeholder="Código de la bobina">
+                        <input type="text" [(ngModel)]="coil_code" class="form-control" placeholder="Código de la bobina">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Espesor</label>
-                        <input type="text" class="form-control" placeholder="Espesor">
+                        <input type="text" [(ngModel)]="thickness" class="form-control" placeholder="Espesor">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Dimensiones</label>
-                        <input type="text" class="form-control" placeholder="Dimensiones de la bobina">
+                        <input type="text" [(ngModel)]="dimensions" class="form-control" placeholder="Dimensiones de la bobina">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Peso bruto</label>
-                        <input type="text" class="form-control" placeholder="Peso bruto">
+                        <input type="text" [(ngModel)]="gross_weight" class="form-control" placeholder="Peso bruto">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Observaciones</label>
-                        <input type="text" class="form-control" placeholder="Observaciones del despacho">
+                        <input type="text" class="form-control" [(ngModel)]="observations" placeholder="Observaciones del despacho">
                     </div>
-
                 </div>
-
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-primary" (click)="newDispatches()">Guardar</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -1041,24 +1018,21 @@
 
                     <div class="mb-3">
                         <label class="form-label">Motonave/Barcaza</label>
-                        <input type="text" class="form-control" placeholder="Nombre de la motonave/barcaza">
+                        <input type="text" [(ngModel)]="motor_ship" class="form-control" placeholder="Nombre de la motonave/barcaza">
                     </div>
                     <div class="mb-3 d-flex justify-content-between w-100">
-                        <div class="initial-date w-50 mx-1">
-                            <label class="form-label">Hora inicio</label>
-                            <input type="time" class="form-control" placeholder="Hora inicio del reporte">
-                        </div>
-                        <div class="finish-date w-50 ">
+
+                        <div class="finish-date w-100 ">
                             <label class="form-label">Fecha </label>
-                            <input type="date" class="form-control" placeholder="Fecha del reporte">
+                            <input type="datetime-local" [(ngModel)]="date_start" class="form-control" placeholder="Fecha del reporte">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Descripción</label>
-                        <input type="text" class="form-control" placeholder="Descripción del reporte">
+                        <input type="text" [(ngModel)]="description " class="form-control" placeholder="Descripción del reporte">
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" class="form-checkbox-primary mr-1">
+                        <input type="checkbox" [(ngModel)]="email_notification" class="form-checkbox-primary mr-1">
                         <label class="form-check-label mx-1">Notificar al correo</label>
                     </div>
                 </div>
@@ -1068,7 +1042,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-primary" (click)="newFactualState()">Guardar</button>
             </div>
         </div>
         <!-- /.modal-content -->

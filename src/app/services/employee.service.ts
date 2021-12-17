@@ -30,7 +30,7 @@ export class EmployeeService {
     const url = `${this.base_url}/employee/getone/${id}`;
     return this.http.get(url, this.header);
   }
-  updateEmployee(id:string, data:{}){
+  updateEmployee(id:string, data:FormData){
     const url = `${this.base_url}/employee/update/${id}`;
     return this.http.put(url, data, this.header);
   }

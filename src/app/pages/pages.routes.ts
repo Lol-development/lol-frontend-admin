@@ -25,6 +25,7 @@ import { MailboxComponent } from './Malibox-group/mailbox/mailbox.component';
 import { ResponseComponent } from './Malibox-group/response/response.component';
 import { OperationsEmployeesJobsComponent } from './Clients/operations-employees-jobs/operations-employees-jobs.component';
 import { ValidateEmailComponent } from './Administratives/validate-email/validate-email.component';
+import { EditVendorsComponent } from './vendors/edit-vendors/edit-vendors.component';
 
 
 
@@ -45,6 +46,7 @@ const routes: Routes = [
         {path:'EditInventory/:id', component:EditInventoryComponent ,  data :{title: 'Editar inventario'}},
         {path:'NewMachine', component:NewMachineComponent ,  data :{title: 'Nuevo equipo'}},
         {path:'VendorsDirectory', component:VendorsComponent ,  data:{title: 'Directorio de Proveedores'}},
+        {path:'VendorsDirectory/:id', component:EditVendorsComponent ,  data:{title: 'Directorio de Proveedores - Actualizar'}},
         {path:'NewVendorsDirectory', component:NewVendorsComponent ,  data:{title: 'Nuevo   Proveedor'}},
         {path:'Parameters', component:ParametersComponent ,  data:{title: 'Parámetros'}},
         {path:'Notifications', component:NotificationsComponent,   data:{title: 'Notificaciones'}},

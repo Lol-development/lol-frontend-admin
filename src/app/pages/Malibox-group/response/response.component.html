@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body">
-        <h4 class="header-title">Responde el mensaje #5</h4>
+        <h4 class="header-title">Responde la cotización de {{client_name}} </h4>
         <p class="text-muted font-14">
 
         </p>
@@ -21,109 +21,87 @@
                         <form>
                             <div class="mb-3">
                                 <label for="simpleinput" class="form-label">Carga el documento de respuesta</label>
-                                <input type="file" id="simpleinput" class="form-control">
+                                <input type="file" accept="document=@/ " #DocumentBox name="document " id="avatarinput " (change)="getBase64($event) " class="form-control ">
+
                             </div>
 
                             <div class="col-lg-12">
-                                <button class="btn btn-primary" (click)="response()">Responder</button>
+                                <button class="btn btn-primary" [disabled]="uploading" (click)="response()">Responder
+
+                                    <i class="mdi mdi-spin" *ngIf="uploading === true">Subiendo</i>
+                                </button>
                             </div>
                         </form>
                     </div>
                     <!-- end col -->
                     <div class="col-sm-12 col-md-9 mt-2">
-                        <div class="card bg-secondary-lighten" style="
-                        background-color: rgb(194 194 194 / 25%)!important;">
-                            <div class=" card-body text-dark ">
-                                <h4 class="card-title ">Costos - Resultados</h4>
-                                <div class="table-responsive">
-                                    <table id="basic-datatable " class="table rounded-1   dt-responsive nowrap w-100 dataTable no-footer dtr-inline " role="grid " aria-describedby="basic-datatable_info " style="position: relative; width: 1524px;  background-color: #f5f5f5 !important;">
-                                        <thead class="bg-primary text-light">
-                                            <tr role="row ">
-                                                <th>Descripción</th>
-                                                <th tabindex="0 " aria-controls="basic-datatable " rowspan="1 " colspan="1 ">Transportes</th>
-                                                <th tabindex="0 " aria-controls="basic-datatable " rowspan="1 " colspan="1 ">Alimentación</th>
-                                                <th tabindex="0 " aria-controls="basic-datatable " rowspan="1 " colspan="1 ">Honorarios</th>
-                                                <th tabindex="0 " aria-controls="basic-datatable " rowspan="1 " colspan="1 ">S.S</th>
-                                                <th tabindex="0 " aria-controls="basic-datatable " rowspan="1 " colspan="1 ">Subtotal</th>
-                                                <th tabindex="0 " aria-controls="basic-datatable " rowspan="1 " colspan="1 ">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="odd ">
-                                                <td class="dtr-control sorting_1 " tabindex="0 ">Personal</td>
-                                                <td>$280.000/p</td>
-                                                <td>$360.000/p</td>
-                                                <td>$1.068.000/p</td>
-                                                <td>$120.000/p</td>
-                                                <td>$1.820.000</td>
-                                                <td>$10.820.000</td>
-                                            </tr>
-                                            <tr class="odd ">
-                                                <td class="dtr-control sorting_1 " tabindex="0 ">Montacargas</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="example-select" class="form-label fw-bold">Puerto</label>
+                                    <input type="text" [(ngModel)]="port_name" disabled="" placeholder="Cantidad de servicios" class="form-control">
 
-                                                <td>$1.160.000</td>
-                                            </tr>
-                                            <tr class="odd ">
-                                                <td class="dtr-control sorting_1 " tabindex="0 ">Camabaja </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>$15.000.000</td>
-                                            </tr>
-                                            <tr class="odd ">
-                                                <td class="dtr-control sorting_1 " tabindex="0 ">Pruebas Covid-19</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>$ 900.000</td>
-                                            </tr>
-                                            <tr class="odd ">
-                                                <td class="dtr-control sorting_1 " tabindex="0 ">Dotaciones</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>$ 250.000</td>
-                                            </tr>
-                                            <tr class="odd ">
-                                                <td class="dtr-control sorting_1 " tabindex="0 ">Imprevistos</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>$ 500.000</td>
-                                            </tr>
-                                            <tr class="odd ">
-                                                <td class="dtr-control sorting_1 " tabindex="0 ">
-                                                    <h4>Total</h4>
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    <h4>$ 25.000.000</h4>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="example-select" class="form-label fw-bold">Tipo de producto</label>
+                                    <input type="text" [(ngModel)]="product_type" disabled="" placeholder="Tipo de producto" class="form-control">
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="example-select" class="form-label fw-bold">Cantidad de servicios</label>
+                                    <input type="number" disabled [(ngModel)]="quantity_services" min="0" placeholder="Cantidad de servicios" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="example-select" class="form-label fw-bold">Numero de toneladas</label>
+                                    <input type="number" [(ngModel)]="tons" disabled min="0" placeholder="Numero de toneladas" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="example-select" class="form-label fw-bold">Fecha estimada de operación</label>
+                                    <input type="date" [(ngModel)]="operation_estimate_date" disabled placeholder="Fecha estimada de operación" class="form-control">
                                 </div>
 
+                                <div class="mb-3">
+                                    <label for="example-select" class="form-label my-0 fw-bold">Rata de productividad</label>
+                                    <input type="number" [(ngModel)]="productivity_rate" disabled name="" class="form-control" min="0" placeholder="Rata de productividad" id="">
+                                </div>
                             </div>
-                        </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="example-select" class="form-label fw-bold">Cantidad de cucharas</label>
+                                    <input type="number" min="0" disabled [(ngModel)]="spoons" placeholder="Cantidad de cucharas" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="example-select" class="form-label fw-bold">Cantidad de Tolvas</label>
+                                    <input type="number" min="0" disabled [(ngModel)]="mini_hoppers" placeholder="Cantidad de cucharas" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="example-select" class="form-label fw-bold">Cantidad de Minitolvas</label>
+                                    <input type="number" min="0" [(ngModel)]="hoppers" disabled placeholder="Cantidad de cucharas" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="example-date" class="form-label fw-bold">Movimientos a realizar con los equipos seleccionados</label>
 
+                                    <div class="form-check">
+                                        <input disabled [checked]="discharge" type="checkbox" class="form-check-input" id="customCheck1">
+                                        <label class="form-check-label" for="customCheck1">Descargue</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input disabled [checked]="charge" type="checkbox" class="form-check-input" id="customCheck2">
+                                        <label class="form-check-label" for="customCheck2">Cargue</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input disabled [checked]="bagged" type="checkbox" class="form-check-input" id="customCheck2">
+                                        <label class="form-check-label" for="customCheck2">Ensacado</label>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                            <!-- end col -->
+
+                        </div>
                     </div>
                 </div>
                 <!-- end row-->

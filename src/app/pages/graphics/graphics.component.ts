@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-graphics',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./graphics.component.css']
 })
 export class GraphicsComponent implements OnInit {
-
-  constructor() { }
+  public stadistics: any = [];
+  constructor(private globalSvc: GlobalService) { }
 
   ngOnInit(): void {
+    this.getStadistics();
   }
 
+
+  getStadistics(){
+    this.globalSvc.getStadistics()
+            .subscribe((resp:any) => {
+              this.stadistics = resp.data;              
+            })
+  }
 }

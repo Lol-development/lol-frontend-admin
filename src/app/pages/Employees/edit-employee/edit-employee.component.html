@@ -43,12 +43,12 @@
                         <div class="row align-items-center">
                             <div class="col-auto">
                                 <div class="avatar-lg">
-                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle img-thumbnail">
+                                    <img [src]="image" alt="" class="rounded-circle img-thumbnail">
                                 </div>
                             </div>
                             <div class="col">
                                 <label for="example-fileinput" class="form-label">Foto de perfíl</label>
-                                <input type="file" id="example-fileinput" class="form-control">
+                                <input type="file" accept="image=@/" #imageBox name="image" id="avatarinput" (change)="convert($event)" class="form-control">
                             </div>
                         </div>
 
@@ -196,6 +196,11 @@
 
             </div>
             <div class="tab-pane " id="certificados">
+                <div class="alert alert-success" role="alert" *ngIf="employeCertificate.length === 0">
+                    <h4 class="alert-heading">Este empleado no tiene certificados asignados</h4>
+                    <p></p>
+                    <p class="mb-0">Crea uno nuevo</p>
+                </div>
                 <div class="app-search d-flex w-100 justify-content-between">
                     <div class="mb-2 position-relative ">
                         <input type="text" placeholder="Buscar certificados" class="form-control">
@@ -205,7 +210,7 @@
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-certificate-modal">Nuevo certificado</button>
                     </div>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive" *ngIf="employeCertificate.length > 0">
                     <table class="table table-striped table-centered mb-0">
                         <thead>
                             <tr>
@@ -240,6 +245,11 @@
                 </div>
             </div>
             <div class="tab-pane " id="medic-test">
+                <div class="alert alert-success" role="alert" *ngIf="medicalTest.length === 0">
+                    <h4 class="alert-heading">Este empleado no tiene examenes medicos asignados</h4>
+                    <p></p>
+                    <p class="mb-0">Crea uno nuevo</p>
+                </div>
                 <div class="app-search d-flex w-100 justify-content-between">
                     <div class="mb-2 position-relative ">
                         <input type="text" placeholder="Buscar examenes médicos" class="form-control">
@@ -249,7 +259,7 @@
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-medical-test-modal">Nuevo exámen médico</button>
                     </div>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive" *ngIf="medicalTest.length > 0">
                     <table class="table table-striped table-centered mb-0">
                         <thead>
                             <tr>
@@ -284,6 +294,11 @@
                 </div>
             </div>
             <div class="tab-pane " id="CNCL">
+                <div class="alert alert-success" role="alert" *ngIf="CNCL.length === 0">
+                    <h4 class="alert-heading">Este empleado no tiene certificaciones laborales asignadas</h4>
+                    <p></p>
+                    <p class="mb-0">Crea uno nuevo</p>
+                </div>
                 <div class="app-search d-flex w-100 justify-content-between">
                     <div class="mb-2 position-relative ">
                         <input type="text" placeholder="Buscar CNCL" class="form-control">
@@ -294,7 +309,7 @@
                     </div>
 
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive" *ngIf="CNCL.length > 0">
                     <table class="table table-striped table-centered mb-0">
                         <thead>
                             <tr>
@@ -329,7 +344,10 @@
                 </div>
             </div>
             <div class="tab-pane " id="inductions">
-
+                <div class="alert alert-success" role="alert" *ngIf="inductions.length === 0">
+                    <h4 class="alert-heading">Este empleado no tiene inducciones</h4>
+                    <p class="mb-0">Genera una nueva</p>
+                </div>
                 <div class="app-search d-flex w-100 justify-content-between">
 
                     <div class="add-certificate">
@@ -340,10 +358,7 @@
                         <span class="mdi mdi-magnify search-icon"></span>
                     </div>
                 </div>
-                <div class="alert alert-success" role="alert" *ngIf="inductions.length === 0">
-                    <h4 class="alert-heading">Este empleado no tiene inducciones</h4>
-                    <p class="mb-0">Genera una nueva</p>
-                </div>
+
                 <div class="table-responsive" *ngIf="inductions.length > 0">
                     <table class="table table-striped table-centered mb-0">
                         <thead>

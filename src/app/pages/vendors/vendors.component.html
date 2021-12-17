@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                 </div>
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-6" *ngIf="suppliers.length > 0">
                     <div id="scroll-horizontal-datatable_filter" class="dataTables_filter w-100">
                         <label class="text-nowrap">Buscar:
                             <input type="search" class="form-control form-control-sm" placeholder="Buscar proveedores" aria-controls="scroll-horizontal-datatable">
@@ -17,7 +17,12 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="dataTables_scroll">
+                    <div class="alert alert-success" role="alert" *ngIf="suppliers.length === 0">
+                        <h4 class="alert-heading">No hay proveedores registrados</h4>
+                        <p></p>
+                        <p class="mb-0">Crea uno nuevo</p>
+                    </div>
+                    <div class="dataTables_scroll" *ngIf="suppliers.length > 0">
 
                         <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
                             <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 100%; padding-right: 0px;">
@@ -46,26 +51,31 @@
                                         <th aria-controls="scroll-horizontal-datatable">CLIENTE</th>
                                         <th aria-controls="scroll-horizontal-datatable">EMPLEADO</th>
                                         <th aria-controls="scroll-horizontal-datatable">AFILIADO</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    <tr class="odd">
-                                        <td class="sorting_1">2.00</td>
-                                        <td>901038306</td>
-                                        <td>A & M RENTALS</td>
-                                        <td>VIA 40 73-290 OFC 413</td>
-                                        <td>3607292</td>
-                                        <td>ACRICOL@ACRICOL.COM</td>
-                                        <td>5224</td>
-                                        <td>0125</td>
-                                        <td>02</td>
-                                        <td>57</td>
-                                        <td>SI</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
+                                    <tr class="odd" *ngFor="let supplier of suppliers">
+                                        <td class="sorting_1">{{supplier.nitem}}</td>
+                                        <td>{{supplier.nit}}</td>
+                                        <td>{{supplier.supplier_name}}</td>
+                                        <td>{{supplier.supplier_address}}</td>
+                                        <td>{{supplier.supplier_phone}}</td>
+                                        <td>{{supplier.email || 'No tiene'}}</td>
+                                        <td>{{supplier.code_ace}}</td>
+                                        <td>{{supplier.code_ciu}}</td>
+                                        <td>{{supplier.code_dpt}}</td>
+                                        <td>{{supplier.code_pai}}</td>
+                                        <td>{{supplier.seller}}</td>
+                                        <td>{{supplier.prove}}</td>
+                                        <td>{{supplier.client}}</td>
+                                        <td>{{supplier.employee}}</td>
+                                        <td>{{supplier.affiliate}}</td>
+                                        <td class="table-action">
+                                            <a [routerLink]="['/Home/VendorsDirectory', supplier.id]" routerLinkActive="router-link-active" class="action-icon"> <i class="mdi mdi-pencil text-success"></i></a>
+                                            <a (click)="deleteVendor(supplier.id)" class="action-icon"> <i class="mdi mdi-delete  text-danger"></i></a>
+                                        </td>
 
                                     </tr>
 

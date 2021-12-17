@@ -9,8 +9,7 @@ import { EmployeeService } from '../../../services/employee.service';
 })
 export class EmployeesListComponent implements OnInit {
   public employees:any[] = [];
-  public replacer =  'document_type';
-  public replac: any;
+
   constructor(private employeSvc: EmployeeService) { }
 
   ngOnInit(): void {
@@ -20,7 +19,6 @@ export class EmployeesListComponent implements OnInit {
     this.employeSvc.getEmployees()
         .subscribe((resp:any) => {
           this.employees = resp.data.employees;
-          console.log(this.employees);
         })
   }
 }

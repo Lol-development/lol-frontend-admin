@@ -19,39 +19,47 @@
             <div class="tab-pane show active" id="input-types-preview">
                 <div class="row">
                     <div class="col-lg-6">
-                        <form>
-                            <div class="mb-3">
-                                <label for="simpleinput" class="form-label">Nombre del equipo</label>
-                                <input type="text" id="simpleinput" class="form-control" placeholder="Nombre del equipo">
-                            </div>
-                            <div class="mb-3">
-                                <label for="simpleinput" class="form-label">Referencía del equipo</label>
-                                <input type="text" id="simpleinput" class="form-control" placeholder="Referencía del equipo">
-                            </div>
-                            <div class="mb-3">
-                                <label for="simpleinput" class="form-label">Certificado del equipo</label>
-                                <input type="text" id="simpleinput" class="form-control" placeholder="Certificado del equipo">
-                            </div>
+                        <div class="mb-3">
+                            <div class="row align-items-center">
 
-                            <div class="mb-3">
-                                <label for="example-email" class="form-label">Descripción</label>
-                                <input type="text" id="example-email" name="example-email" class="form-control" placeholder="Descripción">
+                                <div class="col">
+                                    <label for="example-fileinput" class="form-label">Foto </label>
+                                    <input type="file" accept="image=@/" #imageBox name="image" id="avatarinput" (change)="convert($event)" class="form-control">
+                                </div>
                             </div>
-
-                            <div class="mb-3">
-                                <label for="example-password" class="form-label">Capacidad</label>
-                                <input type="text" id="example-Cantidad" class="form-control" value="Capacidad">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="example-palaceholder" class="form-label">Cantidad</label>
-                                <input type="number" min="0" id="example-palaceholder" class="form-control" placeholder="Cantidad">
-                            </div>
-                            <button class="btn btn-primary">Ingresar</button>
-
-
-                        </form>
+                            <label for="simpleinput" class="form-label">Nombre del equipo</label>
+                            <input type="text" [(ngModel)]="equipment_name" id="simpleinput" class="form-control" placeholder="Nombre del equipo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="simpleinput" class="form-label">Referencía del equipo</label>
+                            <input type="text" [(ngModel)]="equipment_ref" id="simpleinput" class="form-control" placeholder="Referencía del equipo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="simpleinput" class="form-label">Certificado del equipo</label>
+                            <input type="text" [(ngModel)]="equipment_certificate" id="simpleinput" class="form-control" placeholder="Certificado del equipo">
+                        </div>
                     </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label for="example-email" class="form-label">Descripción</label>
+                            <input type="text" [(ngModel)]="equipment_description" id="example-email" name="example-email" class="form-control" placeholder="Descripción">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="example-password" class="form-label">Capacidad</label>
+                            <input type="text" [(ngModel)]="equipment_capacity" id="example-Cantidad" class="form-control" value="Capacidad">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="example-palaceholder" class="form-label">Cantidad</label>
+                            <input type="number" [(ngModel)]="equipment_amount" min="0" id="example-palaceholder" class="form-control" placeholder="Cantidad">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" (click)="createEquipment()">Ingresar</button>
+
+
+
                     <!-- end col -->
 
 

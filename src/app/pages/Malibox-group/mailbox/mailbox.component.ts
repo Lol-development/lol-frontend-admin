@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuotationsService } from 'src/app/services/quotations.service';
 
 @Component({
   selector: 'app-mailbox',
@@ -7,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class MailboxComponent implements OnInit {
-
-  constructor() { }
+  public quotations: any[] = [];
+  constructor(private quotationsSvc:QuotationsService) { }
 
   ngOnInit(): void {
-  }
 
+    this.getQuotations();
+  }
+  
+  getQuotations(){
+    this.quotationsSvc.getAllQuotation()
+            .subscribe((resp:any) => {
+              this.quotations = resp.data;
+              console.log(this.quotations);
+            })
+  }
 }

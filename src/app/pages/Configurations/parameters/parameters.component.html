@@ -58,12 +58,18 @@
 
                     </div>
                     <div class="col-lg-6">
-                        <table class="table table-centered mb-0">
+                        <div class="alert alert-success" role="alert" *ngIf="charges.length === 0">
+                            <h4 class="alert-heading">No hay cargos disponibles</h4>
+                            <p></p>
+                            <p class="mb-0">Crea uno nuevo</p>
+                        </div>
+                        <table class="table table-centered mb-0" *ngIf="charges.length > 0">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Valor horas</th>
                                     <th>Horario del cargo</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,7 +77,9 @@
                                     <td>{{charge.name}}</td>
                                     <td>{{charge.hour_value}} </td>
                                     <td>{{charge.horary}}</td>
-
+                                    <td class="table-action">
+                                        <a (click)="deleteCharges(charge.id)" class="action-icon"> <i class="mdi mdi-delete text-danger"></i></a>
+                                    </td>
                                 </tr>
 
                             </tbody>
@@ -111,13 +119,8 @@
                             <tbody>
                                 <tr *ngFor="let port of ports">
                                     <td>{{port.name}} </td>
-
                                     <td>
-                                        <!-- Switch-->
-                                        <div>
-
-                                            <i class="mdi mdi-delete text-danger"></i>
-                                        </div>
+                                        <a (click)="deletePort(port.id)" class="action-icon"> <i class="mdi mdi-delete text-danger"></i></a>
                                     </td>
                                 </tr>
 
@@ -138,13 +141,18 @@
 
                     </div>
                     <div class="col-lg-6">
-                        <table class="table table-centered mb-0">
+                        <div class="alert alert-success" role="alert" *ngIf="certificates.length === 0">
+                            <h4 class="alert-heading">No hay certificados disponibles</h4>
+                            <p></p>
+                            <p class="mb-0"></p>
+                        </div>
+                        <table class="table table-centered mb-0" *ngIf="certificates.length > 0">
                             <thead>
                                 <tr>
                                     <th>Nombre del certificado</th>
                                     <th>Tipo</th>
                                     <th>ID</th>
-
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -152,6 +160,10 @@
                                     <td>{{c.name}}</td>
                                     <td>{{c.type}}</td>
                                     <td>{{c.id}} </td>
+                                    <td>January 25, 1959</td>
+                                    <td class="table-action">
+                                        <a (click)="deleteCertificate(c.id)" class="action-icon"> <i class="mdi mdi-delete text-danger"></i></a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -167,72 +179,55 @@
                         <form>
                             <div class="mb-3">
                                 <label for="example-select" class="form-label">Descripción</label>
-                                <input type="text" id="name-charge" name="name-charge" class="form-control" placeholder="Descripción del turno">
+                                <input type="text" [(ngModel)]="description_turn" id="name-charge" name="name-charge" class="form-control" placeholder="Descripción del turno">
 
                             </div>
                             <div class="mb-3">
                                 <label for="hour-Valor" class="form-label">Abreviación</label>
-                                <input type="text" id="hour-Valor" name="hour-Valor" min="0" class="form-control" placeholder="Abreviación">
+                                <input type="text" [(ngModel)]="abbreviation_turn" id="hour-Valor" name="hour-Valor" min="0" class="form-control" placeholder="Abreviación">
                             </div>
                             <div class="mb-3">
                                 <label for="example-select" class="form-label">Valor</label>
-                                <input type="number" name="turn-value" id="" class="form-control" placeholder="Valor a pagar por el turno">
+                                <input type="number" [(ngModel)]="value_turn" name="turn-value" id="" class="form-control" placeholder="Valor a pagar por el turno">
                             </div>
                             <div class="mb-3">
                                 <label for="turn-comments" class="form-label">Comentarios</label>
-                                <input type="text" id="turn-comments" name="turn-comments" min="0" class="form-control" placeholder="Comentarios del turno">
+                                <input type="text" [(ngModel)]="comments" id="turn-comments" name="turn-comments" min="0" class="form-control" placeholder="Comentarios del turno">
                             </div>
                         </form>
                     </div>
                     <div class="col-lg-7 ">
-                        <table class="table table-centered mb-0">
+                        <div class="alert alert-success" role="alert" *ngIf="Turns.length === 0">
+                            <h4 class="alert-heading">No hay turnos disponibles</h4>
+                            <p></p>
+                            <p class="mb-0">Crea uno nuevo</p>
+                        </div>
+                        <table class="table table-centered mb-0" *ngIf="Turns.length > 0">
                             <thead>
                                 <tr>
                                     <th>Descripción</th>
                                     <th>Abreviación</th>
                                     <th>Valor</th>
                                     <th>Comentarios</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Turno 8 hrs Diurno</td>
-                                    <td>8DI</td>
-                                    <td>$ 40,350</td>
-                                    <td>
-                                        <!-- Switch-->
-                                        Transporte
+                                <tr *ngFor="let Turn of Turns">
+                                    <td>{{Turn.description}} </td>
+                                    <td>{{Turn.abbreviation}}</td>
+                                    <td>{{Turn.value}}</td>
+                                    <td> {{Turn.comments}} </td>
+                                    <td class="table-action">
+                                        <a (click)="deleteTurns(Turn.id)" class="action-icon"> <i class="mdi mdi-delete text-danger"></i></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Turno 8 Hrs Nocturno</td>
-                                    <td>8NO</td>
-                                    <td>$ 46,550</td>
-                                    <td>Transporte</td>
 
-                                </tr>
-                                <tr>
-                                    <td>Turno 8 Hrs Domingos y festivos Diurno</td>
-                                    <td>8DD</td>
-                                    <td>$ 63,100</td>
-                                    <td>
-                                        <!-- Switch-->
-                                        No aplica transporte
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Turno 8 Hrs Domingos y festivos Nocturno</td>
-                                    <td>8DN</td>
-                                    <td>$ 64,000</td>
-                                    <td>
-                                        No aplica transporte
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm-12">
-                        <button class="btn btn-primary" style="width: 100px;"><b>Crear</b></button>
+                    <div class="col-sm-12 my-2">
+                        <button class="btn btn-primary" (click)="createTurns()" style="width: 100px;"><b>Crear</b></button>
                     </div>
                 </div>
             </div>

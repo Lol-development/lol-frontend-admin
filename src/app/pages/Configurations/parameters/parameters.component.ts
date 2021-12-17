@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
 import Swal from 'sweetalert2';
@@ -13,17 +14,23 @@ export class ParametersComponent implements OnInit {
   public ports:any[] = [];
   public certificates:any[] = [];
   public charges:any[] = [];
+  public Turns:any[] = [];
   type: any;
   name: any;
   charge_name: any;
   hour_value: any;
   horary: any;
+  description_turn: any;
+  abbreviation_turn: any;
+  value_turn: any;
+  comments: any;
   constructor(private globalSvc: GlobalService) { }
 
   ngOnInit(): void {
     this.getPortS();
     this.getCertificates();
     this.getCharges();
+    this.getTurns();
   }
   getPortS(){
     this.globalSvc.getPorts()
@@ -45,7 +52,32 @@ export class ParametersComponent implements OnInit {
               }
             })
   }
-
+  deletePort(id:string){
+    Swal.fire({
+      title: '¿Quieres eliminar este puerto? ',
+      showDenyButton: true,
+     
+      confirmButtonText: 'Eliminar',
+       denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.globalSvc.deletePort(id)
+        .subscribe((resp:any) => {
+            if (resp.error === false) {
+              Swal.fire('Exito', resp.message, 'success');
+              this.getPortS();
+            } else {
+              Swal.fire('Oooops', resp.message, 'error')
+            }
+        })
+      } else if (result.isDenied) {
+        Swal.fire('Eliminación cancelada', '', 'info')
+      }
+     
+    })
+    
+  }
   getCertificates(){
     this.globalSvc.getAllCertificates()
           .subscribe((resp:any) => {
@@ -67,14 +99,40 @@ export class ParametersComponent implements OnInit {
                 }
               } )
   }
-
+  deleteCertificate(id:string){
+    Swal.fire({
+      title: '¿Quieres eliminar este certificado? ',
+      showDenyButton: true,
+     
+      confirmButtonText: 'Eliminar',
+       denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.globalSvc.deleteCertificates(id)
+        .subscribe((resp:any) => {
+          if (resp.error === false) {
+            Swal.fire('Exito', resp.message, 'success');
+            this.getCertificates();
+          } else {
+            Swal.fire('Ooops', resp.message, 'error');
+            this.getCertificates();
+          }
+          console.log(resp)
+        })
+      } else if (result.isDenied) {
+        Swal.fire('Eliminación cancelada', '', 'info')
+      }
+     
+    })
+   
+  }
   getCharges(){
     this.globalSvc.getCharges()
             .subscribe((resp:any) => {
               this.charges = resp.data;
             })
   }
-
   createCharge(){
     const body = {
       name: this.charge_name,
@@ -92,4 +150,81 @@ export class ParametersComponent implements OnInit {
               }
             })
   }
+  deleteCharges(id:string){
+    Swal.fire({
+      title: '¿Quieres eliminar este cargo? ',
+      showDenyButton: true,
+     
+      confirmButtonText: 'Eliminar',
+       denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.globalSvc.deleteCharges(id)
+        .subscribe((resp:any) => {
+          if (resp.error === false) {
+            Swal.fire('Exito!', resp.message, 'success');
+            this.getCharges();
+          }else {
+            Swal.fire('Oooops', resp.message, 'error');
+          }
+        })
+      } else if (result.isDenied) {
+        Swal.fire('Eliminación cancelada', '', 'info')
+      }
+     
+    })
+  
+      
+  }
+  getTurns(){
+    this.globalSvc.getAllTurns()
+            .subscribe((resp:any) => {
+              this.Turns =  resp.data
+            })
+  }
+  createTurns(){
+    const body  = {
+      description: this.description_turn,
+      abbreviation: this.abbreviation_turn,
+      value: this.value_turn,
+      comments: this.comments
+    }
+    this.globalSvc.createTurn(body)
+            .subscribe((resp:any) => {
+              if (resp.error === false) {
+                  Swal.fire('Exito', resp.message, 'success');
+                  this.getTurns();
+              } else {
+                Swal.fire('Oooops', resp.message, 'error');
+              }
+            })
+  }
+  deleteTurns(id:string){
+        Swal.fire({
+      title: '¿Quieres eliminar este turno? ',
+      showDenyButton: true,
+     
+      confirmButtonText: 'Eliminar',
+       denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.globalSvc.deleteTurn(id)
+        .subscribe((resp:any) => {
+          if (resp.error === false ) {
+              Swal.fire('Exito', resp.message, 'success');
+              this.getTurns();
+          } else {
+            Swal.fire('Ooops', resp.message, 'error')
+          }
+        })
+      } else if (result.isDenied) {
+        Swal.fire('Eliminación cancelada', '', 'info')
+      }
+     
+    })
+  
+  }
 }
+

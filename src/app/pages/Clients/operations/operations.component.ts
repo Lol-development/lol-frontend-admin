@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from 'src/app/services/client.service';
+import { OperationsService } from 'src/app/services/operations.service';
 
 @Component({
   selector: 'app-operations',
@@ -9,7 +10,8 @@ import { ClientService } from 'src/app/services/client.service';
 })
 export class OperationsComponent implements OnInit {
   public clients:any[] = [];
-  constructor(private clientSvc:ClientService) { }
+
+  constructor(private clientSvc:ClientService, private operationsSvc: OperationsService ) { }
 
   ngOnInit(): void {
     this.getClients();
@@ -21,4 +23,5 @@ export class OperationsComponent implements OnInit {
           console.log(this.clients);
         })
   }
+
 }

@@ -9,25 +9,22 @@
                         <div class="row align-items-center">
                             <div class="col-auto">
                                 <div class="avatar-lg">
-                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle img-thumbnail">
+                                    <img [src]="employee_photo" alt="" class="rounded-circle img-thumbnail">
                                 </div>
                             </div>
                             <div class="col">
                                 <div>
-                                    <h4 class="mt-1 mb-1">Apolinar Javier Barrios Jiménez</h4>
+                                    <h4 class="mt-1 mb-1">{{employee_name}}</h4>
                                     <p class="font-13 text-muted"> Trabajador</p>
 
                                     <ul class="mb-0 list-inline">
                                         <li class="list-inline-item me-3">
-                                            <h5 class="mb-1 text-center">$870.000</h5>
+                                            <h5 class="mb-1 text-center">{{total | currency}}</h5>
                                             <p class="mb-0 font-13">Total a liquidar</p>
                                         </li>
-                                        <li class="list-inline-item me-3">
-                                            <h5 class="mb-1 text-center">$85.000</h5>
-                                            <p class="mb-0 font-13">Total a liquidar - transportes</p>
-                                        </li>
+
                                         <li class="list-inline-item">
-                                            <h5 class="mb-1 text-center">30</h5>
+                                            <h5 class="mb-1 text-center">{{total_turns}}</h5>
                                             <p class="mb-0 font-13">Turnos completados</p>
                                         </li>
                                     </ul>
@@ -66,89 +63,58 @@
                                 <th>Abreviación</th>
                                 <th>Valor</th>
                                 <th>Fecha</th>
-                                <th>Puerto</th>
                                 <th>Comentarios</th>
-                                <th>Certificación</th>
                                 <th>Comidas</th>
                                 <th>Confirmación</th>
+                                <th>Transportes</th>
                                 <th>EPP</th>
+                                <th>Actualizar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Turnos 8hrs Diurno</td>
-                                <td>8DI</td>
-                                <td><span class="badge bg-primary">$40.350/u</span></td>
-                                <td>01/06/2021 - 05/06/2021 </td>
-                                <td>Pimsa</td>
-                                <td>Transporte</td>
-                                <td>
-                                    <input class="form-check-input" type="checkbox" value="" checked="">
-                                    <label class="form-check-label" for="flexCheckDefault"></label>
-                                </td>
-                                <td>
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <label class="form-check-label" for="flexCheckDefault"></label>
-                                </td>
-                                <td>
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <label class="form-check-label" for="flexCheckDefault"></label>
-                                </td>
-                                <td>
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <label class="form-check-label" for="flexCheckDefault"></label>
-                                </td>
+                            <tr *ngFor="let employee_turn of employee_turns">
+                                <td>{{employee_turn.turn.description}}</td>
+                                <td>{{employee_turn.turn.abbreviation}}</td>
 
-                            </tr>
-                            <tr>
-                                <td>Turnos 8hrs Nocturno</td>
-                                <td>8NO</td>
-                                <td><span class="badge bg-primary">$46.550/u</span></td>
-                                <td>06/06/2021 - 05/16/2021 </td>
-                                <td>Pimsa</td>
-                                <td>Transporte</td>
-                                <td>
-                                    <input class="form-check-input" type="checkbox" value="" checked="">
-                                    <label class="form-check-label" for="flexCheckDefault"></label>
-                                </td>
-                                <td>
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <label class="form-check-label" for="flexCheckDefault"></label>
-                                </td>
-                                <td>
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <label class="form-check-label" for="flexCheckDefault"></label>
-                                </td>
-                                <td>
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <label class="form-check-label" for="flexCheckDefault"></label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Turnos 10hrs Sabado a Domingo</td>
-                                <td>10SDN</td>
-                                <td><span class="badge bg-primary">$73.450/u</span></td>
-                                <td>17/06/2021 - 05/30/2021 </td>
-                                <td>Pimsa</td>
+                                <td><span class="badge bg-primary">{{employee_turn.turn.value}}</span></td>
+                                <td> {{employee_turn.date_start}} {{employee_turn.date_stop}} </td>
+                                <td>{{employee_turn.turn.comments}}</td>
 
-                                <td>No aplica Transporte</td>
                                 <td>
-                                    <input class="form-check-input" type="checkbox" value="" checked="">
+                                    <input class="form-check-input" disabled type="checkbox" [checked]="employee_turn.foods">
                                     <label class="form-check-label" for="flexCheckDefault"></label>
                                 </td>
                                 <td>
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" disabled type="checkbox" [checked]="employee_turn.confirmation">
                                     <label class="form-check-label" for="flexCheckDefault"></label>
                                 </td>
                                 <td>
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" disabled type="checkbox" [checked]="employee_turn.transport">
                                     <label class="form-check-label" for="flexCheckDefault"></label>
                                 </td>
                                 <td>
-                                    <input class="form-check-input" type="checkbox" value="">
+                                    <input class="form-check-input" disabled type="checkbox" [checked]="employee_turn.epp">
                                     <label class="form-check-label" for="flexCheckDefault"></label>
+                                </td>
+                                <td class="table-action">
+                                    <div class="dropdown float-end" bis_skin_checked="1">
+                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="mdi mdi-dots-vertical"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end" bis_skin_checked="1">
+                                            <!-- item-->
+                                            <a (click)="updateTurn(employee_turn.id, true, employee_turn.epp , employee_turn.transport )" class="dropdown-item " style="cursor: pointer;">Entregar Comidas</a>
+                                            <!-- item-->
+                                            <a (click)="updateTurn(employee_turn.id, employee_turn.foods, employee_turn.epp , true )" class="dropdown-item " style="cursor: pointer;">Entregar Transportes</a>
+                                            <!-- item-->
+                                            <a (click)="updateTurn(employee_turn.id, employee_turn.foods,true , employee_turn.transport )" class="dropdown-item " style="cursor: pointer;">Entregar EPP</a>
+                                            <!-- item-->
+                                            <a (click)="updateTurn(employee_turn.id, true, true , true)" class="dropdown-item">Entregar Todos</a>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
+
 
                         </tbody>
                     </table>
@@ -175,25 +141,31 @@
                 <div class="date-container d-flex justify-content-between">
                     <div class="mb-3">
                         <label class="form-label">Fechas Inicial</label>
-                        <input type="date" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
+                        <input type="date" [(ngModel)]="date_start" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Fechas Final</label>
-                        <input type="date" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
+                        <input type="date" [(ngModel)]="date_stop" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
                     </div>
                 </div>
 
+                <div class="mb-3">
+                    <select class="form-select mb-3" [(ngModel)]="charge_id">
+                        <option selected="">Seleccionar cargo</option>
+                        <option [value]="charge.id"  *ngFor="let charge of charges">{{charge.name}}</option>
+                      
+                    </select>
+                </div>
 
-                <select class="form-select mb-3">
+                <select class="form-select mb-3" [(ngModel)]="turn_id">
                     <option selected="">Seleccionar turno</option>
-                    <option value="1">8hrs Diurno</option>
-                    <option value="2">8hrs Nocturno</option>
-                    <option value="3">10hrs Diurno, Sabados y Domingos</option>
+                    <option *ngFor="let Turn of Turns" [value]="Turn.id" >{{Turn.description}} </option>
+
                 </select>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-primary" (click)="newEmployeeOperation()">Guardar</button>
             </div>
         </div>
         <!-- /.modal-content -->

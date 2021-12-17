@@ -19,6 +19,7 @@ import { TeamsModule } from './Teams/teams.module';
 import { MailboxGroupModule } from './Malibox-group/mailbox-group.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdministrativesModule } from './Administratives/administratives.module';
+import { EditVendorsComponent } from './vendors/edit-vendors/edit-vendors.component';
 
 
 
@@ -29,7 +30,8 @@ import { AdministrativesModule } from './Administratives/administratives.module'
     VendorsComponent,
     GraphicsComponent,
     
-    NewVendorsComponent,  
+    NewVendorsComponent,
+          EditVendorsComponent,  
   ],
   imports: [
     CommonModule,

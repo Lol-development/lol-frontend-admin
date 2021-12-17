@@ -1,15 +1,17 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SuppliersService } from 'src/app/services/suppliers.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-new-vendors',
-  templateUrl: './new-vendors.component.html',
+  selector: 'app-edit-vendors',
+  templateUrl: './edit-vendors.component.html',
   styles: [
   ]
 })
-export class NewVendorsComponent implements OnInit {
+export class EditVendorsComponent implements OnInit {
+
   public nitem: number = 0;
   public nit : number = 0;
   public supplier_name:string = '';
@@ -25,11 +27,16 @@ export class NewVendorsComponent implements OnInit {
   public client:number = 0;
   public employee:number = 0;
   public affiliate:number = 0;
-  constructor(private router:Router,  private suppliersSvc: SuppliersService ) { }
+  ID: any;
+  constructor(private router:Router,  private suppliersSvc: SuppliersService , private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(({id}) => {
+      this.ID = id
+    });
+    this.getSupplier()
   }
-  createSupplier(){
+  updateSupplier(){
     const body = {
      nitem: this.nitem, 
      nit: this.nit, 
@@ -48,7 +55,7 @@ export class NewVendorsComponent implements OnInit {
      affiliate: this.affiliate
     }
 
-    this.suppliersSvc.createSupplier(body)
+    this.suppliersSvc.updateSupplier(body, this.ID)
               .subscribe((resp:any) => {
                 if (resp.error === false) {
                   Swal.fire('Exito', resp.message, 'success');
@@ -59,5 +66,27 @@ export class NewVendorsComponent implements OnInit {
                 }
               })
 
+  }
+
+  getSupplier(){
+    this.suppliersSvc.getSupplierId(this.ID)
+            .subscribe(({data}:any) => {
+              console.log(data)
+              this.nitem = data.nitem;
+              this.nit = data.nit;
+              this.supplier_name = data.supplier_name;
+              this.supplier_address = data.supplier_address;
+              this.supplier_phone = data.supplier_phone;
+              this.supplier_email = data.supplier_email;
+              this.code_ace = data.code_ace;
+              this.code_ciu = data.code_ciu;
+              this.code_dpt = data.code_dpt;
+              this.code_pai = data.code_pai;
+              this.seller = data.seller;
+              this.prove = data.prove;
+              this.client = data.client;
+              this.employee = data.employee;
+              this.affiliate = data.affiliate;
+            })
   }
 }

@@ -17,7 +17,7 @@ export class EditEmployeeComponent implements OnInit {
   public documents:any[] = [];
  public  ID: any;
  public  document_type_id!:any;
- public  doc_number!: number;
+ public  doc_number!: any;
  public  fullname!: string;
  public  effective_date!: string;
  public  eps!: string ;
@@ -27,9 +27,9 @@ export class EditEmployeeComponent implements OnInit {
  public  neighborhood!: string;
  public  rut!: string;
  public  email!: string;
- public  bank_account!: number;
+ public  bank_account!: any;
  public  back_entity: string = '';
- public  phone!: number;
+ public  phone!: any;
  public  allergy: string = '';
  public  birth_date: string = '';
  public  document_issue_date: string = '';
@@ -37,7 +37,7 @@ export class EditEmployeeComponent implements OnInit {
  public  city: string = '';
  public  marital_status: string = '';
  public  academic_level: string = '';
- public  emergency_number: number = 0;
+ public  emergency_number: any = 0;
  public  emergency_name: string = '';
  public  regimen: string = '';
  public  afp: string = '';
@@ -69,6 +69,9 @@ export class EditEmployeeComponent implements OnInit {
   entity_cncl: any;
   date_realization_cncl: any;
   date_expiration_cncl: any;
+  public image!: File  | any ;
+  preview: string | ArrayBuffer | null = null;
+
   constructor(private globalSvc: GlobalService, private activatedRoute:ActivatedRoute, private employeSvc:EmployeeService) { }
 
   ngOnInit(): void {
@@ -85,7 +88,17 @@ export class EditEmployeeComponent implements OnInit {
     this.getCNCLEmployee();
     this.getCNCLAvaible();
   }
-
+  convert(event: Event): void {
+    const target = (event.target as HTMLInputElement);
+    if (target.files && target.files[0]) {
+      this.image = target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(target.files[0]); // read file as data url
+      reader.onload = (progressEvent) => { // called once readAsDataURL is completed
+        this.preview  = progressEvent.target!.result;
+      };  
+    }
+  }
 
   getDocumentTypes(){
     this.globalSvc.getDocumentsType()
@@ -127,46 +140,49 @@ export class EditEmployeeComponent implements OnInit {
           this.vaccination_date_1 = resp.data.employee.vaccination_date_1;
           this.vaccination_date_2 = resp.data.employee.vaccination_date_2;
           this.vaccination_date_3 = resp.data.employee.vaccination_date_3;
+          this.image = resp.data.employee.photo;
           
     })
   }
   updateEmployee(){
-      const body = {
-        document_type_id: this.document_type_id,
-        document_number: this.doc_number,
-        fullname: this.fullname ,
-        effective_date: this.effective_date,
-        eps: this.eps,
-        alr: this.arl,
-        address: this.address ,
-        pension: this.pension,
-        neighborhood: this.neighborhood,
-        rut: this.rut,
-        email: this.email,
-        bank_account: this.bank_account,
-        back_entity: this.back_entity,
-        phone: this.phone,
-        allergy: this.allergy,
-        birth_date: this.birth_date,
-        document_issue_date: this.document_issue_date,
-        place_issue_date: this.place_issue_date,
-        city: this.city,
-        marital_status: this.marital_status,
-        academic_level: this.academic_level,
-        emergency_number: this.emergency_number,
-        emergency_name: this.emergency_name,
-        regime: this.regimen,
-        afp: this.afp,
-        rh: this.rh,
-        confidencial_agreement: this.confidencial_agreement,
-        vaccination_date_1: this.vaccination_date_1,
-        vaccination_date_2: this.vaccination_date_2,
-        vaccination_date_3: this.vaccination_date_3,
-    }
-    this.employeSvc.updateEmployee(this.ID, body)
+    const fd = new FormData  ();
+    fd.append('document_type_id', this.document_type_id );
+    fd.append('document_number', this.doc_number );
+    fd.append('fullname', this.fullname );
+    fd.append('effective_date', this.effective_date );
+    fd.append('eps', this.eps );
+    fd.append('alr', this.arl );
+    fd.append('address', this.address );
+    fd.append('pension', this.pension );
+    fd.append('neighborhood', this.neighborhood );
+    fd.append('rut', this.rut );
+    fd.append('email', this.email );
+    fd.append('bank_account', this.bank_account );
+    fd.append('back_entity', this.back_entity );
+    fd.append('phone', this.phone );
+    fd.append('allergy', this.allergy );
+    fd.append('birth_date', this.birth_date );
+    fd.append('document_issue_date', this.document_issue_date );
+    fd.append('place_issue_date', this.place_issue_date );
+    fd.append('city', this.city );
+    fd.append('marital_status', this.marital_status );
+    fd.append('academic_level', this.academic_level );
+    fd.append('emergency_number', this.emergency_number );
+    fd.append('emergency_name', this.emergency_name );
+    fd.append('regime', this.regimen );
+    fd.append('afp', this.afp );
+    fd.append('rh', this.rh );
+    fd.append('confidencial_agreement', this.confidencial_agreement );
+    fd.append('vaccination_date_1', this.vaccination_date_1 );
+    fd.append('vaccination_date_2', this.vaccination_date_2 );
+    fd.append('vaccination_date_3', this.vaccination_date_3 );
+    fd.append('image', this.image );
+    
+    this.employeSvc.updateEmployee(this.ID, fd)
               .subscribe((resp:any) => {
                 if (resp.error === false) {
                   Swal.fire('Exito', resp.message, 'success');
+                  this.getEmployeeByID();
                 } else{
                   Swal.fire('Oooops', resp.message, 'error');
                 }

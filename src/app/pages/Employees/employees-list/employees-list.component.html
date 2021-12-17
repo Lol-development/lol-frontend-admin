@@ -1,18 +1,15 @@
 <div class="card">
     <div class="card-body">
-
         <h4 class="header-title">Listado de empleados</h4>
         <p class="text-muted font-14">
             Visualiza los empleados
         </p>
-
         <ul class="nav nav-tabs nav-bordered mb-3">
             <li class="nav-item">
                 <a href="#striped-rows-preview" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
                     General
                 </a>
             </li>
-
         </ul>
         <!-- end nav-->
         <div class="tab-content">
@@ -33,7 +30,7 @@
                                 <th>Correo</th>
                                 <th>Teléfono</th>
                                 <th>Cuenta bancaria</th>
-                                <th>Vigencia de inducción</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,31 +54,24 @@
                                 <td>
                                     <span>{{e.bank_account}}</span>
                                 </td>
-
                                 <td class="table-action">
                                     <a [routerLink]="['/Home/EditEmployee', e.id]" class="action-icon edit"> <i class="mdi mdi-pencil"></i></a>
                                     <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
                                 </td>
                             </tr>
-
-
                         </tbody>
                     </table>
                     <div class="dataTables_paginate paging_simple_numbers mt-1 text-end" id="complex-header-datatable_paginate">
                         <ul class="pagination pagination-rounded text-end">
                             <li class="paginate_button page-item previous disabled" id="complex-header-datatable_previous"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="0" tabindex="0" class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
                             <li class="paginate_button page-item active"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-
                             <li class="paginate_button page-item next" id="complex-header-datatable_next"><a href="#" aria-controls="complex-header-datatable" data-dt-idx="7" tabindex="0" class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
                         </ul>
                     </div>
                 </div>
-
                 <!-- end table-responsive-->
             </div>
             <!-- end preview-->
-
-
             <!-- end preview code-->
         </div>
         <!-- end tab-content-->

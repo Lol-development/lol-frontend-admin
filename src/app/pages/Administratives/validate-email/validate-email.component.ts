@@ -32,13 +32,11 @@ export class ValidateEmailComponent implements OnInit {
     this.authsvc.validateCode(verifyForm)
             .subscribe((resp:any)=> {
               if (resp.error === false) {
-                console.log(resp)
                 const body  =  {
-                  email: localStorage.getItem('email')
+                  email: localStorage.getItem('admin_email')
                 }
                 this.authsvc.validateEmailAdmin(body)
                       .subscribe((resp:any) => {
-                        console.log(resp);
                         if (resp.data.validateEmail) {
                          
                           this.router.navigateByUrl('/Home/AuxAdminList');
@@ -46,7 +44,6 @@ export class ValidateEmailComponent implements OnInit {
                         };
                         })
               } else if (!resp.data.ok) {
-                console.log(resp)
                 Swal.fire('Ooops', 'código incorrecto', 'error')
 
               }

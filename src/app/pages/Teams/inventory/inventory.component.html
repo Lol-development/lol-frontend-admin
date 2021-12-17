@@ -17,7 +17,12 @@
         <!-- end nav-->
         <div class="tab-content">
             <div class="tab-pane show active" id="striped-rows-preview">
-                <div class="table-responsive-sm">
+                <div class="alert alert-success my-2" role="alert" *ngIf="equipments.length === 0">
+                    <h4 class="alert-heading">No hay equipos registrados</h4>
+                    <p></p>
+                    <p class="mb-0">Crea uno nuevo</p>
+                </div>
+                <div class="table-responsive" *ngIf="equipments.length > 0">
                     <table class="table table-striped table-centered mb-0">
                         <thead>
                             <tr>
@@ -31,75 +36,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let equipment of equipments">
                                 <td class="">
-                                    <img width="80px" height="80px" src="assets/images/equipos_propios.jpg" alt="" class="me-2 ">
+                                    <img *ngIf="!equipment.equipment_image" width="80px" height="80px" src="assets/images/equipos_propios.jpg" class="me-2 ">
+                                    <img *ngIf="equipment.equipment_image" width="80px" height="80px" [src]="equipment.equipment_image" class="me-2 ">
+
                                 </td>
                                 <td>
-                                    Almejas o cucharas graneleras
-                                </td>
-                                <td>Electrohidráulicas, radio controladas, certificadas bajo SQT Group.
+                                    {{equipment.equipment_name}}
                                 </td>
                                 <td>
-                                    Entre 8 metros cúbicos y 10 metros cúbicos.
+                                    {{equipment.equipment_description}}
                                 </td>
                                 <td>
-                                    SDFHI234HF
+                                    {{equipment.equipment_capacity}}
                                 </td>
                                 <td>
-                                    DFPBPDS32
+                                    {{equipment.equipment_ref}}
+                                </td>
+                                <td>
+                                    {{equipment.equipment_certificate}}
                                 </td>
                                 <td class="table-action">
-                                    <a [routerLink]="['/Home/EditInventory', 5]" class="action-icon edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
+                                    <a [routerLink]="['/Home/EditInventory', equipment.id]" class="action-icon edit"> <i class="mdi mdi-pencil"></i></a>
+                                    <a (click)="deleteInventory(equipment.id)" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="">
-                                    <img width="80" height="80" src="assets/images/equipos_propios.jpg" alt="" class="me-2 ">
-                                </td>
-                                <td>
-                                    Tolvas graneleras de estructura desarmable pernadas
-                                </td>
-                                <td>
-                                    Sistema de apertura y cierre de boquilla tipo almeja - boca de descargue de 60 cm x 60 cm (cada una), contando con las siguientes características técnicas (cada una)
-                                </td>
-                                <td>
-                                    Volumen Carga máxima: 34 m3.
-                                </td>
-                                <td>
-                                    MDIHI234HF
-                                </td>
-                                <td>
-                                    MBFBPDS32
-                                </td>
-                                <td>
-                                    <a [routerLink]="['/Home/EditInventory', 5]" class="action-icon edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="">
-                                    <img width="80px" height="80px" src="assets/images/equipos_propios.jpg" alt="" class="me-2 ">
-                                </td>
-                                <td>Minitolva doble</td>
-                                <td>
-                                    Sistema de apertura y cierre de boquilla tipo almeja, cierre hermético, con palancas telescópicas – dos bocas de descargue de 30 cm x 30 cm (cada una), con escalera móvil, volumen de carga máxima: 3.4 M3,
-                                </td>
-                                <td>
-                                    Capacidad de carga máxima: 6.0 Ton
-                                </td>
-                                <td>
-                                    MSRHI2764HF
-                                </td>
-                                <td>
-                                    MBFBPDS32
-                                </td>
-                                <td class="table-action">
-                                    <a [routerLink]="['/Home/EditInventory', 5]" class="action-icon edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
+
 
                         </tbody>
                     </table>

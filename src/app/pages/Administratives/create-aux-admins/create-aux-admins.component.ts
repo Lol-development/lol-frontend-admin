@@ -31,7 +31,6 @@ export class CreateAuxAdminsComponent implements OnInit {
     } else {
       this.authSvc.createAdmin(data)
       .subscribe((resp:any) => {
-        console.log(resp)
         if (resp.error === false) {
           const verifyEmail = {
             email: data.email
@@ -42,6 +41,7 @@ export class CreateAuxAdminsComponent implements OnInit {
                   if (resp.error === false) {
                     this.router.navigateByUrl('/Validate-email');
                     localStorage.setItem('code_id', resp.data.code_id);
+                    localStorage.setItem('admin_email', verifyEmail.email);
                   } else {
                     Swal.fire( `${resp.message}`, 'Vuelve a intentarlo', 'error');
                     
