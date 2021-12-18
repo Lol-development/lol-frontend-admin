@@ -223,7 +223,7 @@ export class EditEmployeeComponent implements OnInit {
       if (result.isConfirmed) {
         this.employeSvc.deleteInductionEmployee(id)
         .subscribe((resp:any) => {
-          console.log(resp);
+
           if (resp.error === false) {
             Swal.fire('Exito', resp.message, 'success');
             this.getHSQInductions();
@@ -260,7 +260,7 @@ export class EditEmployeeComponent implements OnInit {
     }
     this.employeSvc.asignCertificate(body)
             .subscribe((resp:any) => {
-              console.log(resp);
+    
               if (resp.error === false) {
                   Swal.fire('Exito', resp.message , 'success');
                   this.getCertifatesEmployee();
@@ -282,7 +282,7 @@ export class EditEmployeeComponent implements OnInit {
       if (result.isConfirmed) {
         this.employeSvc.deleteAsignCertificate(id)
         .subscribe((resp:any) => {
-          console.log(resp);
+
           if (resp.error === false) {
             Swal.fire('Exito', resp.message, 'success');
             this.getCertifatesEmployee();

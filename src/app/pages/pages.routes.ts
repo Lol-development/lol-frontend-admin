@@ -24,14 +24,15 @@ import { EditEmployeeComponent } from './Employees/edit-employee/edit-employee.c
 import { MailboxComponent } from './Malibox-group/mailbox/mailbox.component';
 import { ResponseComponent } from './Malibox-group/response/response.component';
 import { OperationsEmployeesJobsComponent } from './Clients/operations-employees-jobs/operations-employees-jobs.component';
-import { ValidateEmailComponent } from './Administratives/validate-email/validate-email.component';
 import { EditVendorsComponent } from './vendors/edit-vendors/edit-vendors.component';
+import { ServicesGuard } from '../services/services.guard';
 
 
 
 const routes: Routes = [
     { path: 'Home', 
      component: HomeComponent, data:{title: 'Home'},
+     canActivate:[ServicesGuard],
     children:[
         {path:'', component:GraphicsComponent, data:{title: 'Graficas y Estadísticas'}},
         {path:'CreateClients', component:CreateClientsComponent,  data:{title: 'Crear clientes'}},

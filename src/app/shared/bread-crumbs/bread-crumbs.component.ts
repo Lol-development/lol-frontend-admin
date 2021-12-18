@@ -13,7 +13,6 @@ export class BreadCrumbsComponent implements OnDestroy {
   public title!: string
 public titleSubs$ : Subscription
   constructor(private router: Router, route: ActivatedRoute) {
-    console.log(route.snapshot.data)
    this.titleSubs$ = this.getDataRoutes()
                           .subscribe( ({title}) =>  {
                             this.title = title;

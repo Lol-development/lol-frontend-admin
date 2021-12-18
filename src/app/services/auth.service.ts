@@ -6,7 +6,14 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  public base_url = environment.base_url
+  public base_url = environment.base_url;
+  get header() {
+    return {
+      headers: {
+        'x-access-token': `${localStorage.getItem('token')}`
+      }
+    }
+  } 
   constructor(private http:HttpClient) { }
 
   login(data: {}){
@@ -32,6 +39,10 @@ export class AuthService {
   validateCode(data:{}){
     const url = `${this.base_url}/code/validate`;
     return this.http.post(url , data)
+  }
 
+  getAdminList(){
+    const url = `${this.base_url}/admin/getall`;
+    return this.http.get(url, this.header)
   }
 }

@@ -20,7 +20,6 @@ export class MailboxComponent implements OnInit {
     this.quotationsSvc.getAllQuotation()
             .subscribe((resp:any) => {
               this.quotations = resp.data;
-              console.log(this.quotations);
             })
   }
 }

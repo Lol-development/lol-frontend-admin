@@ -41,7 +41,6 @@ export class InventoryComponent implements OnInit {
             this.getInventory();
           } else {
             Swal.fire('Ooops', resp.message, 'error');
-            console.log(resp);
           }
         })
       }

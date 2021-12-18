@@ -22,33 +22,23 @@
                             <tr>
                                 <th>Nombre completo</th>
                                 <th>Usuario</th>
-                                <th>Cargo</th>
-                                <th>Numero de contacto</th>
-                                <th>Rol</th>
-                                <th></th>
+                                <th>ID</th>
+
+                                <!--                                 <th></th>
+ -->
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Admin1 </td>
-                                <td>admin1@lol.com</td>
-                                <td>Tarjador</td>
-                                <td>30214567865</td>
-                                <td>Veedor</td>
-                                <td class="table-action">
+                            <tr *ngFor="let admin of admins">
+                                <td>{{admin.admin_name}} </td>
+                                <td>{{admin.email}} </td>
+                                <td>{{admin.id | slice:0:10}}</td>
+
+                                <!-- <td class="table-action">
                                     <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
-                                </td>
+                                </td> -->
                             </tr>
-                            <tr>
-                                <td>Admin2 </td>
-                                <td>admin2@lol.com</td>
-                                <td>Digitalizador</td>
-                                <td>3001245677</td>
-                                <td>Admin general</td>
-                                <td class="table-action">
-                                    <a href="javascript: void(0);" class="action-icon delete-admin"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
+
 
 
                         </tbody>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-list-aux-admins',
@@ -9,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListAuxAdminsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authSvc:AuthService) { }
+  public admins:any [] = [];
+    ngOnInit(): void {
+    this.getAdminList()
+  }
 
-  ngOnInit(): void {
+  getAdminList(){
+    this.authSvc.getAdminList()
+          .subscribe((resp:any) => {
+            this.admins = resp.data.admins;
+          })
   }
 
 }

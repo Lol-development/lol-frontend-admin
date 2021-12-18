@@ -18,12 +18,14 @@ export class NewMachineComponent implements OnInit {
   public equipment_amount:any = 1;
   public image!: File  | any ;
   preview: string | ArrayBuffer | null = null;
+  public charge:boolean = false;
   constructor(private inventorySvc: InventoryService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   createEquipment(){
+    this.charge = !this.charge;
     const fd = new FormData();
     fd.append('equipment_name', this.equipment_name )
     fd.append('equipment_ref', this.equipment_ref )
@@ -35,12 +37,12 @@ export class NewMachineComponent implements OnInit {
     
     this.inventorySvc.createEquipment(fd)
             .subscribe((resp:any) => {
+              this.charge = !this.charge;
               if (resp.error === false) {
                 Swal.fire('Exito', resp.message, 'success');
                 this.router.navigateByUrl('/Home/Inventory');
               } else{
                 Swal.fire('Oooops', resp.message, 'error');
-                console.log(resp)
               }
             })
 

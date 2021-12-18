@@ -298,7 +298,7 @@ export class OperationsClientDetailsComponent implements OnInit {
 
     this.operationSvc.createEvidence(fd)
               .subscribe((resp:any) => {
-                console.log(resp);
+               ;
                 if (resp.error === false ) {
                   Swal.fire('Exito', resp.message, 'success');
                   this.getOperationEvidences();
@@ -352,6 +352,7 @@ export class OperationsClientDetailsComponent implements OnInit {
           .subscribe((resp:any) =>{
             if (resp.error === false) {
               Swal.fire('Exito', resp.message, 'success');
+              this.getOperationReport();
             } else {
               Swal.fire('Oooops', resp.message, 'error')
             }
@@ -366,11 +367,9 @@ export class OperationsClientDetailsComponent implements OnInit {
     expected_time: this.expected_time,
     real_time: this.real_time
    }
-   console.log(body)
+  
    this.operationSvc.UpdateReport(this.rid, body)
-              .subscribe((resp:any) => {
-                console.log(body)
-                console.log(resp)
+              .subscribe((resp:any) => {               
                 if (resp.error === false) {
                   Swal.fire('Exito', resp.message, 'success');
                 } else {
@@ -382,7 +381,7 @@ export class OperationsClientDetailsComponent implements OnInit {
  getOperationReport(){
       this.operationSvc.getAllReportForOperation(this.Oid)
               .subscribe((resp:any) => {
-                console.log(resp)
+               
                 this.expected_rat = resp.data.expected_rat;
                 this.expected_time = resp.data.expected_time;
                 this.obtained_rat = resp.data.obtained_rat;

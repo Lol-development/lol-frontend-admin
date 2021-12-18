@@ -4,8 +4,8 @@ import { AuthRoutingModule } from './auth/auth.routes';
 import { PagesRoutingModule } from './pages/pages.routes';
 
 const routes: Routes = [
-/*   {path: '', redirectTo: '/Home', pathMatch: 'full'}
- */
+   {path: '', redirectTo: '/Home', pathMatch: 'full'}
+ 
 ];
 
 @NgModule({

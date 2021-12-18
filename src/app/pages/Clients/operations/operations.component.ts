@@ -20,7 +20,6 @@ export class OperationsComponent implements OnInit {
     this.clientSvc.getClients() 
         .subscribe((resp:any)=> {
           this.clients = resp.data.clients;
-          console.log(this.clients);
         })
   }
 

@@ -7,7 +7,7 @@ import { ValidateEmailClientComponent } from '../pages/Clients/validate-email-cl
 
 const routes: Routes = [
     
-    {path:'', component:LoginComponent},
+    {path:'login', component:LoginComponent},
     {path:'Validate-email', component:ValidateEmailComponent,   data:{title: 'Crear administradores auxiliares'}},
     {path:'Validate-email-client', component:ValidateEmailClientComponent,   data:{title: 'Crear clientes '}},
 

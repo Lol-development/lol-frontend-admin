@@ -56,8 +56,16 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-primary" (click)="createEquipment()">Ingresar</button>
+                    <button class="btn btn-primary" *ngIf="!charge" (click)="createEquipment()">Ingresar</button>
 
+                    <div class="alert alert-success my-2" role="alert" *ngIf="charge">
+                        <h4 class="alert-heading">Creando equipo</h4>
+                        <p></p>
+                        <h5>
+                            Cargando
+                            <i class="mdi mdi-spin mdi-loading"></i>
+                        </h5>
+                    </div>
 
 
                     <!-- end col -->
