@@ -33,7 +33,7 @@ export class SuppliersService {
   }
   updateSupplier(data:{}, id:string){
       const url = `${this.base_url}/suppliers/update/${id}`;
-      return this.http.post(url, data, this.header);
+      return this.http.put(url, data, this.header);
   }
   deleteSupplier(id:string){
       const url = `${this.base_url}/suppliers/delete/${id}`;

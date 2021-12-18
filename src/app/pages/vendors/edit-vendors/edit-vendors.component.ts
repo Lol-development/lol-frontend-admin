@@ -62,7 +62,6 @@ export class EditVendorsComponent implements OnInit {
                   this.router.navigateByUrl('/Home/VendorsDirectory')
                 } else {
                   Swal.fire('Oooops', resp.message, 'error');
-                  console.log(resp)
                 }
               })
 
