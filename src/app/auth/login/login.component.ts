@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(private authSVC:AuthService, private router:Router) { }
 
   ngOnInit(): void {
-  }
+    localStorage.clear()
+    }
   login(){
     const data = {
       email:this.email,
